@@ -11,8 +11,11 @@ dependencies:
 - finesse
 - jupyter
 - gpstime
+- poppler
+- ipympl
 - pip
 - pip:
     - beamtrace
     - PyPDF2
+    - jupyter-tikz
     - jupyter-book
