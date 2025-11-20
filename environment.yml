@@ -19,3 +19,4 @@ dependencies:
     - PyPDF2
     - jupyter-tikz
     - jupyter-book
+    - jupyterlab_myst
