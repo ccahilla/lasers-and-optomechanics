@@ -1,0 +1,14 @@
+pages:
+  stage: deploy
+  image: condaforge/mambaforge:latest
+  before_script:
+    - mamba env update -n base -f environment.yml
+    - mamba install -n base jupyter-book
+  script:
+    - jupyter-book build --all .
+    - mv _build/html public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
