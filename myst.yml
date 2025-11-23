@@ -1,12 +1,12 @@
 # See docs at: https://mystmd.org/guide/frontmatter
 version: 1
 project:
+  jupyter: true
   id: bb72cfb9-eabc-4077-a078-815a960f385b
   title: Lasers and Optomechanics
   description: Physics Course at Syracuse University
   keywords: [Lasers, Optics, Mechanics, Modulations, Pound-Drever-Hall, Gravitational Wave Detectors]
   authors: [Craig Cahillane]
-  jupyter: true
   # gitlab: https://gitlab.com/syracuse_experimental_gravity/lasers-and-optomechanics
   # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
   toc:
