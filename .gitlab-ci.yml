@@ -6,7 +6,7 @@ pages:
     - mamba install -n base jupyter-book
   script:
     - jupyter-book build --all .
-    # - mv _build/site public
+    - mv _build/site/public public
   artifacts:
     paths:
       - public
