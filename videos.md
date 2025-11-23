@@ -3,7 +3,7 @@
 Videos online relevant to aspects of this course:
 
 ```{table} Videos online relevant to *Lasers and Optomechanics*
-:name: videos
+:name: table:videos
 :align: center
 
 | $N$ | **Title and Video Link**        |
