@@ -3,7 +3,7 @@
 In this course, we will overview the basics of optomechanics, lasers, and interferometers, 
 with a focus on understanding optics lab components and gravitational wave detectors like Advanced LIGO.
 
-## <span style="color: #9c9cff;">Course Topics</span>
+## <span style="color: #ff9c9c;">Course Topics</span>
 1. Intro to Lasers
 2. Plane Wave Mechanics and Interference
 3. Interferometers
@@ -15,7 +15,7 @@ with a focus on understanding optics lab components and gravitational wave detec
 
 and more Special Topics.
 
-## <span style="color: #9c9cff;">Course Overview</span>
+## <span style="color: #9cff9c;">Course Overview</span>
 
 ### Goals
 A key component of this course will be familiarizing yourself with the latest interferometer simulation tools,
@@ -60,7 +60,7 @@ like the ones in this class about a topic in interferometry, lasers, optomechani
 I have linked some useful optics videos in [](#table:videos).  
 These are not required for class, but in some cases strongly recommended to quickly review course content.
 
-## <span style="color: #9c9cff;">Prerequisites</span>
+## <span style="color: #9c009c;">Prerequisites</span>
 
 Students will be expected to have working knowledge of the following
 1. Waves
@@ -69,5 +69,6 @@ Students will be expected to have working knowledge of the following
 4. Differential Equations
 5. Laplace Transforms
 6. `python`
+7. Linear Algebra
 
 We will review topics as necessary, but previous exposure will be useful.
