@@ -72,3 +72,26 @@ Students will be expected to have working knowledge of the following
 7. Linear Algebra
 
 We will review topics as necessary, but previous exposure will be useful.
+
+## <span style="color: #ee9c9c;">Github Repo and Python Virtual Environment</span>
+
+Below are instructions to create the `lasers` virtual python environment, which will allow you to run the jupyter notebooks which make up our interactive lectures.
+I have included instructions for Mac and Linux terminal users. 
+I will be adding material throughout the semester, so you may need to `git pull` the repo again over time.
+Let me know if any of these instructions do not work for you.
+
+If you use Windows, you may be able to try these instructions in VS Code or some other terminal simulator.  
+Please come see me and we will work out something together for you and all Windows users (if you find a workflow that works for you, please let me know so I can record it here):
+
+1. Install `git`: [https://git-scm.com/install/](https://git-scm.com/install/)
+2. Install `mamba` (do a Fresh Install): [https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html)
+3. You can test both install in terminal with `which git` and `which mamba`
+4. Git clone the repo: `git clone https://github.com/ccahilla/lasers-and-optomechanics.git` (cloning vis CLI or SSH also acceptable.)
+5. Move into the directory: `cd lasers-and-optomechanics`
+6. Look for a file named `environment.yml`.  This should define the `lasers` conda/mamba python virtual environment that will run all the code in this class, including `numpy`, `matplotlib`, and `jupyter` libraries.
+7. Create the `lasers` mamba environment: `mamba env create -f environment.yml`.
+8. Activate the environment: `mamba activate lasers`.  
+9. If successful, you should see a `(lasers)` preamble in your terminal.
+10. Test your `lasers` environment.  Run `jupyter lab` in a terminal with `lasers` activated. 
+11. Visit `http://localhost:8888` in your browser.  `jupyter lab` should launch a locally-hosted server which allows you to run jupyter notebooks or other python or markdown code in your browser.
+12. Within jupyter lab, try opening `chapters/00_introduction.ipynb` and running the notebook (I like to use the "fast-forward" button to "Restart the kernel and run all cells").
