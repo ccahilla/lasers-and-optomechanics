@@ -1,0 +1,179 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5838,        169]
+NotebookOptionsPosition[      4821,        143]
+NotebookOutlinePosition[      5223,        159]
+CellTagsIndexPosition[      5180,        156]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Integrate", "[", 
+  RowBox[{
+   RowBox[{"Sin", "[", "t", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", 
+     RowBox[{"-", "Infinity"}], ",", "Infinity"}], "}"}], ",", 
+   RowBox[{"Assumptions", "->", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\[Omega]", ">", "0"}], ",", 
+      RowBox[{"\[Omega]0", ">", "0"}]}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.974297205000703*^9, 3.974297292917729*^9}, {
+  3.974297445237226*^9, 3.974297446184546*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"dd37bae5-1009-4301-819f-33e1abc1aeb3"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Integrate", "idiv", 
+   "\"Integral of \\!\\(\\*RowBox[{\\\"Sin\\\", \\\"[\\\", \\\"t\\\", \\\"]\\\
+\"}]\\) does not converge on \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"\[Infinity]\\\"}], \\\",\\\", \
+\\\"\[Infinity]\\\"}], \\\"}\\\"}]\\).\"", 2, 5, 3, 35083001749082928976, 
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.97429726434404*^9, 3.9742973053699636`*^9, 
+  3.974297446723473*^9},
+ CellLabel->
+  "During evaluation of \
+In[5]:=",ExpressionUUID->"e7cd5407-ea73-46b9-b65d-e29905591e3a"],
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", 
+  RowBox[{
+   RowBox[{"Sin", "[", "t", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", 
+     RowBox[{"-", "\[Infinity]"}], ",", "\[Infinity]"}], "}"}], ",", 
+   RowBox[{"Assumptions", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\[Omega]", ">", "0"}], ",", 
+      RowBox[{"\[Omega]0", ">", "0"}]}], "}"}]}]}], "]"}]], "Output",
+ CellChangeTimes->{{3.9742972443743887`*^9, 3.974297264539054*^9}, 
+   3.974297305377719*^9, 3.9742974467604313`*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"1a6f1cd7-6586-4191-9bbd-f8791f7963f3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FourierTransform", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Exp", "[", 
+     RowBox[{"I", " ", "\[Omega]0", " ", "t"}], "]"}], 
+    RowBox[{"Exp", "[", 
+     RowBox[{"I", " ", "\[Phi]"}], "]"}]}], ",", "t", ",", "\[Omega]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.974297369254793*^9, 3.974297385872616*^9}, {
+  3.974297516680052*^9, 3.974297522518424*^9}, {3.974297571912513*^9, 
+  3.974297595239749*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"add6e98a-244b-43cb-862b-8bad9cfa365b"],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["\[ExponentialE]", 
+   RowBox[{"\[ImaginaryI]", " ", "\[Phi]"}]], " ", 
+  SqrtBox[
+   RowBox[{"2", " ", "\[Pi]"}]], " ", 
+  RowBox[{"DiracDelta", "[", 
+   RowBox[{"\[Omega]", "+", "\[Omega]0"}], "]"}]}]], "Output",
+ CellChangeTimes->{
+  3.974297386185004*^9, 3.974297522875691*^9, {3.9742975732221413`*^9, 
+   3.9742975955622253`*^9}},
+ CellLabel->"Out[12]=",ExpressionUUID->"194ca685-bd74-4a9e-96ba-f614d95e3289"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FourierTransform", "[", 
+  RowBox[{
+   RowBox[{"A", " ", 
+    RowBox[{"Sin", "[", 
+     RowBox[{
+      RowBox[{"\[Omega]0", " ", "t"}], "+", "\[Phi]"}], "]"}]}], ",", "t", 
+   ",", "\[Omega]", ",", 
+   RowBox[{"FourierParameters", "->", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", " ", 
+      RowBox[{"-", "1"}]}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.974297457192967*^9, 3.974297495819487*^9}, {
+  3.9742983347967663`*^9, 3.974298337807621*^9}, {3.974299678476431*^9, 
+  3.9742996833556137`*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"f3764594-e0b9-4897-a6c7-252a6835ade1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"-", "\[ImaginaryI]"}], " ", "A", " ", 
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"\[ImaginaryI]", " ", "\[Phi]"}]], " ", 
+   SqrtBox[
+    FractionBox["\[Pi]", "2"]], " ", 
+   RowBox[{"DiracDelta", "[", 
+    RowBox[{
+     RowBox[{"-", "\[Omega]"}], "+", "\[Omega]0"}], "]"}]}], "+", 
+  RowBox[{"\[ImaginaryI]", " ", "A", " ", 
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{
+     RowBox[{"-", "\[ImaginaryI]"}], " ", "\[Phi]"}]], " ", 
+   SqrtBox[
+    FractionBox["\[Pi]", "2"]], " ", 
+   RowBox[{"DiracDelta", "[", 
+    RowBox[{"\[Omega]", "+", "\[Omega]0"}], "]"}]}]}]], "Output",
+ CellChangeTimes->{{3.974297462190682*^9, 3.97429749611106*^9}, 
+   3.974298344006826*^9, 3.9742996842907467`*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"826dc2da-282d-4b30-932a-67472e81a73e"]
+}, Open  ]]
+},
+WindowSize->{606., 683.25},
+WindowMargins->{{40.5, Automatic}, {72.75, Automatic}},
+FrontEndVersion->"13.2 for Linux x86 (64-bit) (January 31, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"6ade4c35-7581-4721-b630-638bf5125496"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 568, 14, 51, "Input",ExpressionUUID->"dd37bae5-1009-4301-819f-33e1abc1aeb3"],
+Cell[1151, 38, 576, 13, 28, "Message",ExpressionUUID->"e7cd5407-ea73-46b9-b65d-e29905591e3a"],
+Cell[1730, 53, 583, 14, 33, "Output",ExpressionUUID->"1a6f1cd7-6586-4191-9bbd-f8791f7963f3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2350, 72, 513, 12, 33, "Input",ExpressionUUID->"add6e98a-244b-43cb-862b-8bad9cfa365b"],
+Cell[2866, 86, 455, 11, 38, "Output",ExpressionUUID->"194ca685-bd74-4a9e-96ba-f614d95e3289"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3358, 102, 611, 15, 33, "Input",ExpressionUUID->"f3764594-e0b9-4897-a6c7-252a6835ade1"],
+Cell[3972, 119, 833, 21, 75, "Output",ExpressionUUID->"826dc2da-282d-4b30-932a-67472e81a73e"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
