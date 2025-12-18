@@ -19,7 +19,8 @@ project:
     - title: Chapters
       children:
         - file: chapters/00_introduction.ipynb
-        - file: chapters/01_the_nature_of_light.ipynb
+        - file: chapters/01_electromagnetic_waves.ipynb
+        - file: chapters/02_photons.ipynb
     - title: Homework
       children:
         - file: homework/00_hw_intro_to_lasers.ipynb
