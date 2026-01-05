@@ -21,6 +21,7 @@ project:
         - file: chapters/00_introduction.ipynb
         - file: chapters/01_electromagnetic_waves.ipynb
         - file: chapters/02_photons_and_lasers.ipynb
+        - file: chapters/03_fabry_perot.ipynb
     - title: Homework
       children:
         - file: homework/00_hw_intro_to_lasers.ipynb
