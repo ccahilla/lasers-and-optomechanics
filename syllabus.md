@@ -49,7 +49,18 @@ The grade breakdown is as follows:
 | Quizzes | 40\% |
 | Review Project | 40\% |
 ```
-**Homeworks** will be due every week, in Jupyter Notebooks with questions that must be completed.
+**Homeworks** will be due every two weeks on Friday.
+I will release them on this course website in Jupyter Notebooks with questions that must be completed.
+
+All homeworks must be turned in via Jupyter Notebook.
+I recommend downloading the homework file from the gitlab: [https://github.com/ccahilla/lasers-and-optomechanics](https://github.com/ccahilla/lasers-and-optomechanics)
+
+Most problems will require math to be done.
+These may be done on paper and scanned in, 
+or directly in $\LaTeX$.
+
+Some problems will require plots be made. 
+I recommend doing those in python in the notebook.
 
 **Quizzes** will be a short in-class question reviewing the previous week's physics concept from lecture, readings, and homework.
 
@@ -73,7 +84,7 @@ Students will be expected to have working knowledge of the following
 
 We will review topics as necessary, but previous exposure will be useful.
 
-## <span style="color: #ee9c9c;">Github Repo and Python Virtual Environment</span>
+## <span style="color: #f0bf75ff;">Github Repo and Python Virtual Environment</span>
 
 Below are instructions to create the `lasers` virtual python environment, which will allow you to run the jupyter notebooks which make up our interactive lectures.
 I have included instructions for Mac and Linux terminal users. 
@@ -95,3 +106,54 @@ Please come see me and we will work out something together for you and all Windo
 10. Test your `lasers` environment.  Run `jupyter lab` in a terminal with `lasers` activated. 
 11. Visit `http://localhost:8888` in your browser.  `jupyter lab` should launch a locally-hosted server which allows you to run jupyter notebooks or other python or markdown code in your browser.
 12. Within jupyter lab, try opening `chapters/00_introduction.ipynb` and running the notebook (I like to use the "fast-forward" button to "Restart the kernel and run all cells").
+
+## <span style="color: #75ddf0ff;">End-of-year review</span>
+
+The **End-of-year Review Project** will be to prepare a review of a special topic in a Jupyter Notebook.
+I would like the format to be similar to a guided journal club: 
+a more in-depth dive into a difficult topic that we may have mentioned or glossed over.
+
+I expect the review to be well-researched, including several references at the end of the notebook.
+I also expect the notebooks to *run*.
+They may run in our *lasers* mamba environment, or you may give alternate instructions for how to run your code.
+
+I have grouped the topics below into different sections.
+Feel free to suggest you are interested in to me as well.
+
+### Rubric
+I will be grading the end-of-year review on the following
+
+1. Scientific motivation
+    - Goals or importance of the topic
+    - Applications or impacts 
+2. Depth of technical detail
+    - Critical Concepts
+    - Equations
+    - Illustrative Plots
+3. References (number, quality, and use in the notebook)
+4. Presentation 
+    - 20 minutes in-class presentation
+
+
+### Special Topics List
+The following are options for the final end-of-year review.
+
+**Facilities**
+1. Laser Interferometer Space Antenna (LISA)
+2. National Ignition Facility (NIF)
+3. Filter Cavity at Advanced LIGO
+
+**Scientific Equipment**
+1. Xygo Interferometer
+2. Hartmann-Wavefront Sensors
+3. Fiber Lasers
+4. Telescopes
+5. Laser Cutters
+
+**Scientific Concepts**
+1. Pondermotive Squeezing
+2. Holograms
+3. Parametric Instability
+4. Thermal Lensing in Optics
+5. Optical Springs (Sidles-Sigg)
+
