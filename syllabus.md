@@ -68,7 +68,7 @@ The **End-of-year Review Project** will be to prepare a review in a Jupyter Note
 like the ones in this class about a topic in interferometry, lasers, optomechanics, or anything else related to the course.
 
 ### Videos
-I have linked some useful optics videos in [](#table:videos).  
+I have linked some useful optics videos in [](#table:videos).
 These are not required for class, but in some cases strongly recommended to quickly review course content.
 
 ## <span style="color: #9c009c;">Prerequisites</span>
