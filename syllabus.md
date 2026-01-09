@@ -3,6 +3,11 @@
 In this course, we will overview the basics of optomechanics, lasers, and interferometers, 
 with a focus on understanding optics lab components and gravitational wave detectors like Advanced LIGO.
 
+## <span style="color: #7ba6f6ff;">Course Info</span>
+- **Professor**: Craig Cahillane
+- **Time**: Monday Wednesday, 12:45 - 2:05 pm
+- **Location**: Physics 208
+
 ## <span style="color: #ff9c9c;">Course Topics</span>
 1. Intro to Lasers
 2. Plane Wave Mechanics and Interference
@@ -43,10 +48,10 @@ The grade breakdown is as follows:
 :name: table:grade_breakdown
 :align: center
 
-| **Component** | **Percent of Final Grade**        |
-|---|---|
-| Homework | 20\% |
-| Quizzes | 40\% |
+| **Component**  | **Percent of Final Grade** |
+|----------------|------|
+| Homework       | 30\% |
+| Quizzes        | 30\% |
 | Review Project | 40\% |
 ```
 **Homeworks** will be due every two weeks on Friday.
