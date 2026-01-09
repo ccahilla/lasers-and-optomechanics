@@ -28,7 +28,8 @@ project:
         - file: chapters/06_polarization.ipynb
     - title: Homework
       children:
-        - file: homework/00_hw_intro_to_lasers.ipynb
+        - file: homework/00_hw_overview.ipynb
+        - file: homework/01_hw_plane_waves_math_review.ipynb
     
 site:
   template: book-theme
