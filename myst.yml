@@ -17,6 +17,7 @@ project:
     - file: syllabus.md
     - file: calendar.md
     - file: videos.md
+    - file: quizzes.md
     - title: Chapters
       children:
         - file: chapters/00_introduction.ipynb
