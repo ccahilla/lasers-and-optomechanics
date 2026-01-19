@@ -150,6 +150,7 @@ The following are options for the final end-of-year review.
 1. Laser Interferometer Space Antenna (LISA)
 2. National Ignition Facility (NIF)
 3. Filter Cavity at Advanced LIGO
+4. GRACE Follow-on
 
 **Scientific Equipment**
 1. Xygo Interferometer
