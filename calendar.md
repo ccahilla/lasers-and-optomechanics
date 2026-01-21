@@ -1,5 +1,7 @@
 # Calendar
 
+HW1 Due Date Postponed, now due January 28 2026!
+
 ## Legend:
 🟢 green: Lecture
 🟠 orange: In-class Quiz
