@@ -25,8 +25,9 @@ project:
         - file: chapters/02_photons_and_lasers.ipynb
         - file: chapters/03_fabry_perot.ipynb
         - file: chapters/04_michelson_inteferometer.ipynb
-        - file: chapters/05_modulations_and_transfer_functions.ipynb
-        - file: chapters/06_polarization.ipynb
+        - file: chapters/05_modulations.ipynb
+        - file: chapters/06_transfer_functions.ipynb
+        - file: chapters/07_polarization.ipynb
     - title: Homework
       children:
         - file: homework/00_hw_overview.ipynb
