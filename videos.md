@@ -13,4 +13,5 @@ Videos online relevant to aspects of this course:
 | 3 | [Complex Numbers Have More Uses Than You Think](https://www.youtube.com/watch?v=4KlvI_uK9zs) |
 | 4 | [Markov Matrices](https://www.youtube.com/watch?v=wuyAeWE3iIM&t=178s) |
 | 5 | [The Physics of Euler's Formula | Laplace Transform Prelude](https://www.youtube.com/watch?v=-j8PzkZ70Lg) |
+| 6 | [But what is the Laplace Transform?](https://www.youtube.com/watch?v=j0wJBEZdwLs) |
 ```
