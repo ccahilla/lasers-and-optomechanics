@@ -37,6 +37,7 @@ project:
     - title: Homework Solutions
       children:
         - file: homework_solutions/01_hw_plane_waves_math_review_solutions.ipynb
+        - file: homework_solutions/02_hw_lasers_and_fabry_perots.ipynb
     
 site:
   template: book-theme
