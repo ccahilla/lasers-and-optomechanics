@@ -165,6 +165,8 @@ Ideas beyond this list should be checked with me before pursuing.
 5. Laser Cutters
 6. Frequency Combs
 7. Tokamak Plasma Monitor Lasers
+8. Fiber Lasers
+9. Diode Lasers
 
 **Scientific Concepts**
 1. Pondermotive Squeezing
@@ -177,6 +179,7 @@ Ideas beyond this list should be checked with me before pursuing.
 8. Laser guide star
 9. Photoneutralization
 10. Higher Harmonic Generation
+11. Laser Cooling
 
 
 
