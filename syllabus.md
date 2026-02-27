@@ -138,9 +138,13 @@ I will be grading the end-of-year review on the following
     - Critical Concepts
     - Equations
     - Illustrative Plots
-3. References (number, quality, and use in the notebook)
+3. References 
+    - Number 
+    - Quality 
+    - Use in the Notebook
 4. Presentation 
     - 30 minutes in-class presentation
+    - Last seven or eight classes of the year
 
 
 ### Special Topics List
