@@ -140,11 +140,12 @@ I will be grading the end-of-year review on the following
     - Illustrative Plots
 3. References (number, quality, and use in the notebook)
 4. Presentation 
-    - 20 minutes in-class presentation
+    - 30 minutes in-class presentation
 
 
 ### Special Topics List
 The following are options for the final end-of-year review.
+Ideas beyond this list should be checked with me before pursuing.
 
 **Facilities**
 1. Laser Interferometer Space Antenna (LISA)
@@ -158,6 +159,8 @@ The following are options for the final end-of-year review.
 3. Fiber Lasers
 4. Telescopes
 5. Laser Cutters
+6. Frequency Combs
+7. Tokamak Plasma Monitor Lasers
 
 **Scientific Concepts**
 1. Pondermotive Squeezing
@@ -165,4 +168,12 @@ The following are options for the final end-of-year review.
 3. Parametric Instability
 4. Thermal Lensing in Optics
 5. Optical Springs (Sidles-Sigg)
+6. Mode-Locked Lasers
+7. Laser energy transfer
+8. Laser guide star
+9. Photoneutralization
+10. Higher Harmonic Generation
+
+
+
 
