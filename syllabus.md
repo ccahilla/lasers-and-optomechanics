@@ -136,15 +136,18 @@ I will be grading the end-of-year review on the following
     - Applications or impacts 
 2. Depth of technical detail
     - Critical Concepts
-    - Equations
+    - Principle of Operation
+    - Key Equations
     - Illustrative Plots
+    - Interactive Plots
 3. References 
     - Number 
     - Quality 
     - Use in the Notebook
 4. Presentation 
     - 30 minutes in-class presentation
-    - Last seven or eight classes of the year
+    - Last seven or eight classes of the year (two per class)
+    - Every student will fill out a "feedback form" for each presention (This counts for your own presentation grade)
 
 
 ### Special Topics List
@@ -165,11 +168,11 @@ Ideas beyond this list should be checked with me before pursuing.
 5. Laser Cutters
 6. Frequency Combs
 7. Tokamak Plasma Monitor Lasers
-8. Fiber Lasers
-9. Diode Lasers
-10. Raman Lasers
-11. Nonplanar Ring Oscillators (NPROs)
-12. Optical clocks
+8. Diode Lasers
+9. Raman Lasers
+10. Nonplanar Ring Oscillators (NPROs)
+11. Optical clocks
+12. Photonic Integrated Circuits (PICs)
 
 **Scientific Concepts**
 1. Pondermotive Squeezing
