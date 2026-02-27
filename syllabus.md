@@ -167,6 +167,9 @@ Ideas beyond this list should be checked with me before pursuing.
 7. Tokamak Plasma Monitor Lasers
 8. Fiber Lasers
 9. Diode Lasers
+10. Raman Lasers
+11. Nonplanar Ring Oscillators (NPROs)
+12. Optical clocks
 
 **Scientific Concepts**
 1. Pondermotive Squeezing
