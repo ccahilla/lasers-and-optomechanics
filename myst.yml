@@ -38,6 +38,7 @@ project:
       children:
         - file: homework_solutions/01_hw_plane_waves_math_review_solutions.ipynb
         - file: homework_solutions/02_hw_lasers_and_fabry_perots.ipynb
+        - file: homework_solutions/03_hw_mich_mod_tfs.ipynb
     
 site:
   template: book-theme
