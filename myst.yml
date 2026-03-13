@@ -18,6 +18,7 @@ project:
     - file: calendar.md
     - file: videos.md
     - file: quizzes.md
+    - file: tutorials.md
     - title: Chapters
       children:
         - file: chapters/00_introduction.ipynb

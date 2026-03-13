@@ -1,0 +1,127 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usetikzlibrary{arrows.meta, patterns}
+
+
+\begin{document}
+
+\begin{center}
+    \textbf{In-class Tutorial: Fabry-Perot Dark Offset Transfer Function}\\
+    March 16, 2026\\
+    Lasers and Optomechanics\\~\\
+    Name: \underline{\hspace{10cm}}
+\end{center}
+
+
+\vspace{0.2cm}
+
+
+
+\noindent
+\textbf{Sensing the Fabry-Perot's Resonance}\\
+Suppose we have a Fabry-Perot interferometer.
+We would like to know whether the Fabry-Perot is on resonance.
+Here we will explore possibilities for sensing the resonance of a Fabry-Perot cavity.
+
+\begin{center}
+  
+\begin{tikzpicture}[
+    >=Stealth,
+    thick,
+    beam/.style={->, very thick, red!80!black},
+]
+ 
+%--- Coordinates ---
+\def\Lx{0}        % input mirror center x
+\def\Rx{7}        % nominal end mirror x (for label L)
+\def\RxShift{8.0} % actual end mirror center x (moved back for Delta L space)
+\def\mirH{1.4}    % half-height of mirrors
+\def\mirW{0.25}   % half-width of mirror rectangles
+\def\beamY{0}     % beam axis y
+ 
+%--- Cavity axis (thin guide line) ---
+\draw[gray!40, thin] (\Lx-1.8, \beamY) -- (\RxShift+1.8, \beamY);
+ 
+%--- Input mirror rectangle (r1) ---
+\filldraw[fill=blue!20!white, draw=blue!60!black, line width=1.2pt]
+    (\Lx-\mirW, -\mirH) rectangle (\Lx+\mirW, \mirH);
+\node[below, blue!70!black, font=\small] at (\Lx, -\mirH-0.2) {$r_1$};
+% Minus sign on interior (right) face of r1
+\node[font=\large, black] at (\Lx+\mirW+0.22, 0) {$-$};
+ 
+%--- Nominal end mirror position (vertical dashed line only) ---
+\draw[dashed, gray, thin] (\Rx, -\mirH-1.1) -- (\Rx, \mirH+0.3);
+ 
+%--- Actual end mirror rectangle (r2), displaced by Delta L ---
+\filldraw[fill=blue!20!white, draw=blue!60!black, line width=1.2pt]
+    (\RxShift-\mirW, -\mirH) rectangle (\RxShift+\mirW, \mirH);
+\node[below, blue!70!black, font=\small] at (\RxShift, -\mirH-0.2) {$r_2$};
+% Minus sign on interior (left) face of r2
+\node[font=\large, black] at (\RxShift-\mirW-0.22, 0) {$-$};
+ 
+%--- Delta L annotation (dashed line to front face of end mirror) ---
+\draw[<->, thin, black!70]
+    (\Rx, -\mirH-0.9) -- (\RxShift-\mirW, -\mirH-0.9)
+    node[midway, below, font=\small] {$\Delta L$};
+\draw[dotted, thin, gray] (\Rx,           -\mirH-0.65) -- (\Rx,           -\mirH-1.0);
+\draw[dotted, thin, gray] (\RxShift-\mirW, -\mirH-0.25) -- (\RxShift-\mirW, -\mirH-1.0);
+ 
+%--- Cavity length label L (below cavity, same row as Delta L) ---
+\draw[<->, thin, black!70]
+    (\Lx+\mirW, -\mirH-0.9) -- (\Rx, -\mirH-0.9)
+    node[midway, below] {$L$};
+\draw[dotted, thin, gray] (\Lx+\mirW, -\mirH-0.25) -- (\Lx+\mirW, -\mirH-1.0);
+ 
+%--- Input beam E_in (on axis, from left to mirror face) ---
+\draw[beam] (-1.8, 0) -- (\Lx-\mirW-0.05, 0)
+    node[midway, above, font=\small] {$E_\mathrm{in}$};
+ 
+%--- Reflected beam E_refl (going back left, below axis) ---
+\draw[beam] (\Lx-\mirW-0.05, -0.3) -- (-1.8, -0.3)
+    node[midway, below, font=\small] {$E_\mathrm{refl}$};
+ 
+%--- Intracavity beam E_cav: forward pass (on axis, same height as E_in) ---
+\draw[beam, orange!85!red] (\Lx+\mirW+0.05, 0) -- (\RxShift-\mirW-0.05, 0)
+    node[midway, above, font=\small] {$E_\mathrm{cav}$};
+ 
+%--- Intracavity return pass (aligned with E_refl at y=-0.3) ---
+\draw[beam, orange!85!red, <-]
+    (\Lx+\mirW+0.05, -0.3) -- (\RxShift-\mirW-0.05, -0.3);
+ 
+%--- Transmitted beam E_trans (on axis, exiting right) ---
+\draw[beam] (\RxShift+\mirW+0.05, 0) -- (\RxShift+1.8, 0)
+    node[midway, above, font=\small] {$E_\mathrm{trans}$};
+ 
+\end{tikzpicture}
+\end{center}
+
+For the below questions, use the following field vector $\vec{E}$ to represent the different seven labeled fields of the interferometer:
+\begin{align}
+\vec{E} = \begin{bmatrix}
+  E_\mathrm{in} & E_{X1} & E_{Y1} & E_{X2} & E_{Y2} & E_{A} & E_{B}
+\end{bmatrix}^T
+\end{align}
+You may also want to use 
+\begin{align}
+\cos{\alpha} = \dfrac{e^{i \alpha} + e^{-i \alpha}}{2}, \qquad \sin{\alpha} = \dfrac{e^{i \alpha} - e^{-i \alpha}}{2i}
+\end{align}
+
+\begin{enumerate}
+  \item Write six equations relating the seven fields of the Mach-Zender interferometer.\\
+  Use parameters $L_1, L_2, \eta, r_{BS1}, t_{BS1}, r_{BS2}, t_{BS2}, r_{M1}, r_{M2}$.
+  \item Find expressions for field transfer functions $\dfrac{E_A}{E_\mathrm{in}}$ and $\dfrac{E_B}{E_\mathrm{in}}$.\\
+  Assume that $r_{BS1} = t_{BS1} = r_{BS2} = t_{BS2} = \dfrac{1}{\sqrt{2}}$,
+  and that $r_{M1} = r_{M2} = 1$.
+  \item Using your result from (2), calculate the power relationships $\dfrac{P_A}{P_\mathrm{in}}$ and $\dfrac{P_B}{P_\mathrm{in}}$.
+  \item What would a change in $L_1$ or $L_2$ do to $E_A$ and $E_B$?  What about the power expressions $P_A$ and $P_B$? 
+  \item What about a change in $\eta$?  Would this impact $E_A$ and $E_B$ or $P_A$ and $P_B$?
+  \item Using your equations from (1), put together an adjacency matrix for the Mach-Zender interferometer.
+  
+\end{enumerate}
+
+\end{document}
