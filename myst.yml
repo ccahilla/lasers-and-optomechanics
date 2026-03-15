@@ -27,8 +27,8 @@ project:
         - file: chapters/03_fabry_perot.ipynb
         - file: chapters/04_michelson_inteferometer.ipynb
         - file: chapters/05_modulations.ipynb
-        - file: chapters/06_transfer_functions.ipynb
-        - file: chapters/07_polarization.ipynb
+        - file: chapters/06_fabry_perot_dark_offset_dither_lock.ipynb
+        - file: chapters/07_pound_drever_hall.ipynb
     - title: Homework
       children:
         - file: homework/00_hw_overview.ipynb
