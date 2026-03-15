@@ -11,7 +11,7 @@
 \begin{document}
 
 \begin{center}
-    \textbf{In-class Tutorial: Fabry-Perot Dark Offset Transfer Function}\\
+    \textbf{In-class Tutorial: Fabry-P\'erot Dark Offset Transfer Function}\\
     March 16, 2026\\
     Lasers and Optomechanics\\~\\
     Name: \underline{\hspace{10cm}}
@@ -23,10 +23,12 @@
 
 
 \noindent
-\textbf{Sensing the Fabry-Perot's Resonance}\\
-Suppose we have a Fabry-Perot interferometer.
-We would like to know whether the Fabry-Perot is on resonance.
-Here we will explore possibilities for sensing the resonance of a Fabry-Perot cavity.
+\textbf{Sensing the Fabry-P\'erot's Resonance}\\
+Suppose we have a Fabry-P\'erot interferometer.
+We would like to know whether the Fabry-P\'erot is on resonance.
+Here we will explore possibilities for sensing the resonance of a Fabry-P\'erot cavity,
+especially in the presence of length disturbances $\Delta L(t)$.
+
 
 \begin{center}
   
@@ -100,28 +102,95 @@ Here we will explore possibilities for sensing the resonance of a Fabry-Perot ca
 \end{tikzpicture}
 \end{center}
 
-For the below questions, use the following field vector $\vec{E}$ to represent the different seven labeled fields of the interferometer:
+Above we have a diagram of a Fabry-P\'erot cavity, 
+with a nominal length $L$, but also some static offset $\Delta L$.
+We will explore our capability to monitor and restore our lock in the case of a static offset.
+
+Recall that field transfer functions of the lossless Fabry-Perot were 
 \begin{align}
-\vec{E} = \begin{bmatrix}
-  E_\mathrm{in} & E_{X1} & E_{Y1} & E_{X2} & E_{Y2} & E_{A} & E_{B}
-\end{bmatrix}^T
-\end{align}
-You may also want to use 
-\begin{align}
-\cos{\alpha} = \dfrac{e^{i \alpha} + e^{-i \alpha}}{2}, \qquad \sin{\alpha} = \dfrac{e^{i \alpha} - e^{-i \alpha}}{2i}
+\dfrac{E_\mathrm{refl}}{E_\mathrm{in}} = \dfrac{r_1 - r_2 e^{-i 2 \phi}}{1 - r_1 r_2 e^{-i 2 \phi}}, \qquad
+\dfrac{E_\mathrm{cav}}{E_\mathrm{in}} = \dfrac{t_1}{1 - r_1 r_2 e^{-i 2 \phi}}, \qquad
+\dfrac{E_\mathrm{trans}}{E_\mathrm{in}} = \dfrac{t_1 t_2 e^{-i \phi}}{1 - r_1 r_2 e^{-i 2 \phi}}
 \end{align}
 
+\noindent
+\textbf{Part 1: Transmitted Power}\\
+The easiest way to tell if light is resonating in the cavity is to look at the transmitted beam.
+Intuitively, there is a maximum transmitted light when the light in the cavity is maximized.
+
 \begin{enumerate}
-  \item Write six equations relating the seven fields of the Mach-Zender interferometer.\\
-  Use parameters $L_1, L_2, \eta, r_{BS1}, t_{BS1}, r_{BS2}, t_{BS2}, r_{M1}, r_{M2}$.
-  \item Find expressions for field transfer functions $\dfrac{E_A}{E_\mathrm{in}}$ and $\dfrac{E_B}{E_\mathrm{in}}$.\\
-  Assume that $r_{BS1} = t_{BS1} = r_{BS2} = t_{BS2} = \dfrac{1}{\sqrt{2}}$,
-  and that $r_{M1} = r_{M2} = 1$.
-  \item Using your result from (2), calculate the power relationships $\dfrac{P_A}{P_\mathrm{in}}$ and $\dfrac{P_B}{P_\mathrm{in}}$.
-  \item What would a change in $L_1$ or $L_2$ do to $E_A$ and $E_B$?  What about the power expressions $P_A$ and $P_B$? 
-  \item What about a change in $\eta$?  Would this impact $E_A$ and $E_B$ or $P_A$ and $P_B$?
-  \item Using your equations from (1), put together an adjacency matrix for the Mach-Zender interferometer.
-  
+    \item Derive an expression for the transmitted \textit{power} $P_\mathrm{trans}(\phi)$.
+    \item What is the maximum transmitted power at resonance $P_\mathrm{trans}(0)$?
+    \item Starting at resonance, what happens to the transmitted power when the cavity gets longer?
+    \item Starting at resonance, what happens to the transmitted power when the cavity gets shorter?
+    \item Would it be possible to use the transmitted power to \textit{restore} resonance in case of some disturbance $\Delta L$?  How might you try to go about it?
 \end{enumerate}
+
+\vspace{0.3cm}
+
+\noindent
+\textbf{Part 2: Reflected Power}\\
+Another option we can analyze is the power in reflection of the cavity $P_\mathrm{refl}$:
+
+\begin{enumerate}
+    \item Derive an expression for the reflected power $P_\mathrm{refl}(\phi)$.  What is the reflected power at resonance?
+    \item Set $r_2 = r_1 = r$.  Does $P_\mathrm{refl}(\phi)$ simplify at all?  What value do you get at resonance?
+    \item Starting at resonance, what happens to the reflected power when the cavity gets longer? Shorter?
+    \item Can you use reflected power to restore resonance?
+\end{enumerate}
+
+
+
+\noindent
+\textbf{Part 3: Reflected Field}\\
+From looking at the transmitted and reflected power, we cannot directly use the power signals from the interferometer to hold onto resonance.
+But we have ignored a crucial signal coming from the interferometer, the phase.
+Here we will calculate the change in reflected field $\dfrac{d E_\mathrm{refl}}{d \phi}$.
+
+\begin{enumerate}
+    \item Derive an expression for the change in reflected field with respect to phase $\phi$: $\dfrac{d E_\mathrm{refl}}{d\phi}(\phi)$.\\
+    \textit{Answer: $\dfrac{d E_\mathrm{refl}}{d\phi}(\phi) = \dfrac{i 2 r_2 (1 - r_1^2) e^{-i 2 \phi}}{(1 - r_1 r_2 e^{-i 2 \phi})^2}$}
+    \item Set $r_2 = r_1 = r$.  What is $E_\mathrm{refl}(0)$?  What is $\dfrac{d E_\mathrm{refl}}{d\phi}(0)$?
+    \item What happens to the reflected field when the cavity gets longer? What about shorter?
+    \item Could you use the reflected field to restore resonance?  What would you need in order to do so?
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\noindent
+\textbf{Part 4: Dither Locking}\\
+In Part 3, we found that it could be possible to use the reflected field phase.
+But how may we measure this signal using photodetectors?
+
+One solution is to introduce a modulation of the end mirror $\Delta x(t) \cos(\omega t)$.
+By introducing a known length modulation of the intracavity field, 
+we can ``rotate'' our phase signal into the amplitude quadrature, where it can be measured at the frequency $\omega$.
+
+Below, we'll go through the math of how dither locking works for the reflected field.\\
+The process is roughly:\\
+A) Find the carrier's contribution to the reflected field (already done in Part 3).\\
+B) Find the carrier field incident on the modulating mirror.\\
+C) Create the audio sidebands.\\
+D) Find the sidebands' contribution to the reflected field.\\
+E) Find the total power signal $P_\mathrm{refl}(t)$.\\
+F) Demodulate that power signal at $\omega$.\\
+What we should find is a power signal at $\omega$ that is proportional to our static offset $\phi = k \Delta L$. 
+If $\phi = 0$, our audio sideband fields should cancel exactly, giving us zero.
+But if $\phi \neq 0$, we should get a power signal that changes sign at $\omega$,
+which tells us which way to move our mirror to recover our resonance.
+
+
+\begin{enumerate}
+    \item First, find the transfer function from the end mirror $E_\mathrm{cav2}$ to the reflected field $E_\mathrm{refl}$.\\
+    \textit{Answer: $\dfrac{E_\mathrm{refl}}{E_\mathrm{cav2}}(\phi) = \dfrac{t_1 e^{-i \phi}}{1 - r_1 r_2 e^{-i 2 \phi}}$}
+    \item Find the carrier field incident on the end mirror $M_2$.
+    \item Apply the length modulation $\Delta x(t) \cos(\omega t)$ to find the total field immediately reflected off the end mirror $E_\mathrm{cav2}$.  
+    \textit{Hint: There should be three fields.}
+    \item Apply your transfer function $\dfrac{E_\mathrm{refl}}{E_\mathrm{cav2}}(\phi)$ from (1) to your total $E_\mathrm{cav2}$ from (3) to find the total reflected field.  
+    \textit{Hint: It may be easier to consider the accrued phases for carrier $\phi$ and for the audio sidebands $\phi \pm \eta$, where $\phi = \omega_0 L / c$ and $\eta = \omega L / c$.}
+    \item Calculate the total reflected power $P_\mathrm{refl}(t)$.  Let $\Delta x^2 \rightarrow 0$ for small length modulations.
+    \item Demodulate the total reflected power at $\omega$ to calculate $P^I_\mathrm{refl}$ and $P^Q_\mathrm{refl}$.  
+\end{enumerate}
+
 
 \end{document}
