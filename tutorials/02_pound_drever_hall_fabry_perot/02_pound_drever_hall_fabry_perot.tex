@@ -29,7 +29,22 @@
 \noindent
 \textbf{Advantages of Pound-Drever-Hall Locking}\\
 Previously we investigated \textit{dither locking} as a method of sensing the resonance of a Fabry-P\'erot cavity.
+Dither locking is a powerful technique for sensing the resonance of a cavity, 
+far better than \textit{half-fringe locking} where the cavity was held at half-power in transmission.
 
+Still, dither locking has some disadvantages.
+First, it required a constant length modulation of the cavity, 
+which can cause some nonlinearities, 
+uses up actuation range, 
+and allows noise couplings through our system.
+
+Additionally, if we carefully analyze our error signal, the zero point may not be exactly at resonance.  
+A good cavity resonance error signal should tell us two things: 
+\begin{enumerate}
+    \item How far away we are from true resonance ($\phi = 0$),
+    \item Which direction we need to move to get to resonance ($\phi > 0$ or $\phi < 0$).
+\end{enumerate}
+If we have a overcoupled cavity, as we often do in practice, the dither lock may take us to just slightly off resonance. 
 
 \begin{center}
   
