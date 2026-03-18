@@ -3,9 +3,11 @@
 \usepackage{tikz}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{xcolor}
+% \usepackage{xcolor}
 \usepackage{enumitem}
 \usetikzlibrary{arrows.meta, patterns, positioning}
+
+\usepackage[dvipsnames]{xcolor}
 
 % Custom colors
 \definecolor{carrierred}{RGB}{200,30,30}
@@ -22,12 +24,8 @@
 \end{center}
 
 
-\vspace{0.2cm}
-
-
-
 \noindent
-\textbf{Advantages of Pound-Drever-Hall Locking}\\
+\textbf{Disadvantages of Pound-Drever-Hall Locking}\\
 Previously we investigated \textit{dither locking} as a method of sensing the resonance of a Fabry-P\'erot cavity.
 Dither locking is a powerful technique for sensing the resonance of a cavity, 
 far better than \textit{half-fringe locking} where the cavity was held at half-power in transmission.
@@ -36,15 +34,20 @@ Still, dither locking has some disadvantages.
 First, it required a constant length modulation of the cavity, 
 which can cause some nonlinearities, 
 uses up actuation range, 
+limits us to actuating at low frequencies (< 100 kHz),
 and allows noise couplings through our system.
 
-Additionally, if we carefully analyze our error signal, the zero point may not be exactly at resonance.  
+Additionally, if we carefully analyze our error signal, 
+the zero point may not be exactly at resonance.  
 A good cavity resonance error signal should tell us two things: 
 \begin{enumerate}
     \item How far away we are from true resonance ($\phi = 0$),
     \item Which direction we need to move to get to resonance ($\phi > 0$ or $\phi < 0$).
 \end{enumerate}
 If we have a overcoupled cavity, as we often do in practice, the dither lock may take us to just slightly off resonance. 
+
+
+
 
 \begin{center}
   
@@ -192,95 +195,90 @@ If we have a overcoupled cavity, as we often do in practice, the dither lock may
 \end{tikzpicture}
 \end{center}
 
-Above we have a diagram of a Fabry-P\'erot cavity, 
-with a nominal length $L$, but also some static offset $\Delta L$.
-We will explore our capability to monitor and restore our lock in the case of a static offset.
-
-Recall that field transfer functions of the lossless Fabry-Perot were 
+Above we have a diagram of a Fabry-P\'erot cavity set up for Pound-Drever-Hall locking.
+Recall the FP cavity reflection equation is 
 \begin{align}
-\dfrac{E_\mathrm{refl}}{E_\mathrm{in}} = \dfrac{r_1 - r_2 e^{-i 2 \phi}}{1 - r_1 r_2 e^{-i 2 \phi}}, \qquad
-\dfrac{E_\mathrm{cav}}{E_\mathrm{in}} = \dfrac{t_1}{1 - r_1 r_2 e^{-i 2 \phi}}, \qquad
-\dfrac{E_\mathrm{trans}}{E_\mathrm{in}} = \dfrac{t_1 t_2 e^{-i \phi}}{1 - r_1 r_2 e^{-i 2 \phi}}
-\end{align}
+r(\phi) = \dfrac{E_\mathrm{refl}}{E_\mathrm{in}}(\phi) = \dfrac{r_1 - r_2 e^{-2 i \phi}}{1 - r_1 r_2 e^{-2 i \phi}}
+\end{align} 
 
 \noindent
-\textbf{Part 1: Transmitted Power}\\
-The easiest way to tell if light is resonating in the cavity is to look at the transmitted beam.
-Intuitively, there is a maximum transmitted light when the light in the cavity is maximized.
+\textbf{Pound-Drever-Hall Locking}\\
+Pound-Drever-Hall circumvents some of these problems by imposing \textit{phase-modulated radio-frequency (RF) sidebands} which co-propagate with the carrier.
+These sidebands, labeled \textcolor{orange}{$\omega_0 + \Omega$} and \textcolor{pink}{$\omega_0 - \Omega$} above, are typically tuned such that if the carrier frequency $\omega_0$ resonates in the cavity, the RF sidebands are \textit{antiresonant} in the cavity.
 
-\begin{enumerate}
-    \item Derive an expression for the transmitted \textit{power} $P_\mathrm{trans}(\phi)$.
-    \item What is the maximum transmitted power at resonance $P_\mathrm{trans}(0)$?
-    \item Starting at resonance, what happens to the transmitted power when the cavity gets longer?
-    \item Starting at resonance, what happens to the transmitted power when the cavity gets shorter?
-    \item Would it be possible to use the transmitted power to \textit{restore} resonance in case of some disturbance $\Delta L$?  How might you try to go about it?
-\end{enumerate}
+We will explore the setup of the PDH lock in this note.
+I recommend using Mathematica, sympy, or Desmos to make some of these plots at the end.
 
-\vspace{0.3cm}
+\newpage 
 
 \noindent
-\textbf{Part 2: Reflected Power}\\
-Another option we can analyze is the power in reflection of the cavity $P_\mathrm{refl}$:
+\textbf{Derivation of the PDH error signal}
 
-\begin{enumerate}
-    \item Derive an expression for the reflected power $P_\mathrm{refl}(\phi)$.  What is the reflected power at resonance?
-    \item Set $r_2 = r_1 = r$.  Does $P_\mathrm{refl}(\phi)$ simplify at all?  What value do you get at resonance?
-    \item Starting at resonance, what happens to the reflected power when the cavity gets longer? Shorter?
-    \item Can you use reflected power to restore resonance?
-\end{enumerate}
+Suppose we start with our carrier light $E_\mathrm{in} = E_0 e^{i \omega_0 t}$.
+Then, we send this light through the electro-optic modulator (EOM) to create the phase-modulated sidebands with modulation depth $\Gamma$ and modulation frequency $\Omega$.\\
+\textcolor{Mahogany}{\textbf{1. What is the total electric field incident on the front of the cavity?}} \\ 
+(It can be helpful to explicitly label your carrier, upper sideband, and lower sideband in the total field).
 
+\vspace{0.5cm}
 
+Next, the light incident on the cavity enters and is reflected by the cavity.
+Each of our three fields will interact with the cavity differently.\\
+\textcolor{Mahogany}{\textbf{2. Write down three single-pass phases $\phi_0, \phi_\mathrm{usb}, \phi_\mathrm{lsb}$ that the carrier, upper sideband, and lower sideband, will experience as they traverse the cavity, in terms of the cavity length $L$, and carrier and RF frequencies $\omega_0$ and $\Omega$.}}
 
+\vspace{0.5cm}
+
+Now that we have our phases, let's use them to describe the total light that is reflected by the cavity.
+\textcolor{Mahogany}{\textbf{3. Write down the cavity total reflected field $E_\mathrm{refl}$ in terms of the reflection function $r(\phi)$ and $\phi_0, \phi_\mathrm{usb}, \phi_\mathrm{lsb}$.}}
+
+\vspace{0.5cm}
+
+Now we have our total reflected field, let's make our power measurement on our photodetector.\\
+\textcolor{Mahogany}{\textbf{4. Write down the cavity total reflected power $P_\mathrm{refl}(t)$ in terms of the reflection function $r(\phi)$ and $\phi_0, \phi_\mathrm{usb}, \phi_\mathrm{lsb}$.}}\\
+You should end up with nine terms, since you are combining three fields.
+At the end, you can set $\Gamma^2 = 0$, to assume small modulation depth.
+
+\vspace{0.5cm}
+
+We have our long $P_\mathrm{refl}(t)$ term.  
+Look at the terms which oscillate at 1$\Omega$.
+Group the $e^{i \Omega t}$ and $e^{-i \Omega t}$ terms.  
+Set the coefficient for $e^{-i \Omega t}$ equal to some complex number $z$,
+and the coefficient for $e^{i \Omega t}$ equal to $y$.\\
+\textcolor{Mahogany}{\textbf{5. What is $z$ and $y$?  Is there any connection between $z$ and $y$?  What is it?}}
+
+\vspace{0.5cm}
 \noindent
-\textbf{Part 3: Reflected Field}\\
-From looking at the transmitted and reflected power, we cannot directly use the power signals from the interferometer to hold onto resonance.
-But we have ignored a crucial signal coming from the interferometer, the phase.
-Here we will calculate the change in reflected field $\dfrac{d E_\mathrm{refl}}{d \phi}$.
+\textcolor{Mahogany}{\textbf{6. Rewrite $P_\mathrm{refl}$ in terms of $z$ and $y$.}}
 
-\begin{enumerate}
-    \item Derive an expression for the change in reflected field with respect to phase $\phi$: $\dfrac{d E_\mathrm{refl}}{d\phi}(\phi)$.\\
-    \textit{Answer: $\dfrac{d E_\mathrm{refl}}{d\phi}(\phi) = \dfrac{i 2 r_2 (1 - r_1^2) e^{-i 2 \phi}}{(1 - r_1 r_2 e^{-i 2 \phi})^2}$}
-    \item Set $r_2 = r_1 = r$.  What is $E_\mathrm{refl}(0)$?  What is $\dfrac{d E_\mathrm{refl}}{d\phi}(0)$?
-    \item What happens to the reflected field when the cavity gets longer? What about shorter?
-    \item Could you use the reflected field to restore resonance?  What would you need in order to do so?
-\end{enumerate}
+\vspace{0.5cm}
 
-\vspace{0.3cm}
+Let's try our demodulation in a new way.
+We usually find $P^I$ and $P^Q$ by integrating $P(t)$ over one cycle of $\cos(\Omega t)$ and $\sin(\Omega t)$, because this gives us a single real number for our two quadratures and is how these measurements are usually made. 
+But we can combine these equations into a single demodulation over $e^{i \Omega t}$ to recover our 1$\Omega$ demodulated response function $P^{\Omega}(\phi, \phi_\mathrm{usb}, \phi_\mathrm{lsb})$.\\
+\textcolor{Mahogany}{\textbf{6. Show we can rewrite the demodulation in this way.}}
 
+\vspace{0.5cm}
 \noindent
-\textbf{Part 4: Dither Locking}\\
-In Part 3, we found that it could be possible to use the reflected field phase.
-But how may we measure this signal using photodetectors?
+\textcolor{Mahogany}{\textbf{7. Calculate the 1$\Omega$ demodulated power $P^\Omega_\mathrm{refl}(\phi, \phi_\mathrm{usb}, \phi_\mathrm{lsb})$.  What can we see pops out?}}
 
-One solution is to introduce a modulation of the end mirror $\Delta x(t) \cos(\omega t)$.
-By introducing a known length modulation of the intracavity field, 
-we can ``rotate'' our phase signal into the amplitude quadrature, where it can be measured at the frequency $\omega$.
+\vspace{0.5cm}
+\noindent
+This term $P^\Omega_\mathrm{refl}$ is our PDH error signal. 
+Assume the RF sidebands are antiresonant, so $\phi_\mathrm{usb} = -\phi_\mathrm{lsb} = \dfrac{\pi}{2}$.\\
+\textcolor{Mahogany}{\textbf{8. Calculate the derivative of $P^\Omega_\mathrm{refl}$ with respect to $\phi$, then evaluate it about zero.}}\\
+This is called the \textit{discriminant} or \textit{optical gain} of the error signal, in units of watts per radian.  
 
-Below, we'll go through the math of how dither locking works for the reflected field.\\
-The process is roughly:\\
-A) Find the carrier's contribution to the reflected field (already done in Part 3).\\
-B) Find the carrier field incident on the modulating mirror.\\
-C) Create the audio sidebands.\\
-D) Find the sidebands' contribution to the reflected field.\\
-E) Find the total power signal $P_\mathrm{refl}(t)$.\\
-F) Demodulate that power signal at $\omega$.\\
-What we should find is a power signal at $\omega$ that is proportional to our static offset $\phi = k \Delta L$. 
-If $\phi = 0$, our audio sideband fields should cancel exactly, giving us zero.
-But if $\phi \neq 0$, we should get a power signal that changes sign at $\omega$,
-which tells us which way to move our mirror to recover our resonance.
+\vspace{0.5cm}
+\noindent
+\textcolor{Mahogany}{\textbf{9. Plot the real and imaginary parts of $P^\Omega_\mathrm{refl}(\phi, \phi_\mathrm{usb}, \phi_\mathrm{lsb})$ as a function of $\phi \in [-\pi, \pi]$.\\
+Plot the discriminant $\dfrac{P^\Omega_\mathrm{refl}}{d \phi}$ about $\phi = 0$ for comparison.}}\\
+Choose a moderate finesse cavity with length $L = 1~\mathrm{m}, T_1 = T_2 = 20\%$, and $\Gamma = 0.1~\mathrm{radians}$.\\
+State what the modulation frequency $\Omega$ must be to be exactly antiresonant in the $L = 1~\mathrm{m}$ cavity.
 
-
-\begin{enumerate}
-    \item First, find the transfer function from the end mirror $E_\mathrm{cav2}$ to the reflected field $E_\mathrm{refl}$.\\
-    \textit{Answer: $\dfrac{E_\mathrm{refl}}{E_\mathrm{cav2}}(\phi) = \dfrac{t_1 e^{-i \phi}}{1 - r_1 r_2 e^{-i 2 \phi}}$}
-    \item Find the carrier field incident on the end mirror $M_2$.
-    \item Apply the length modulation $\Delta x(t) \cos(\omega t)$ to find the total field immediately reflected off the end mirror $E_\mathrm{cav2}$.  
-    \textit{Hint: There should be three fields.}
-    \item Apply your transfer function $\dfrac{E_\mathrm{refl}}{E_\mathrm{cav2}}(\phi)$ from (1) to your total $E_\mathrm{cav2}$ from (3) to find the total reflected field.  
-    \textit{Hint: It may be easier to consider the accrued phases for carrier $\phi$ and for the audio sidebands $\phi \pm \eta$, where $\phi = \omega_0 L / c$ and $\eta = \omega L / c$.}
-    \item Calculate the total reflected power $P_\mathrm{refl}(t)$.  Let $\Delta x^2 \rightarrow 0$ for small length modulations.
-    \item Demodulate the total reflected power at $\omega$ to calculate $P^I_\mathrm{refl}$ and $P^Q_\mathrm{refl}$.  
-\end{enumerate}
+\vspace{0.5cm}
+\noindent
+\textcolor{Mahogany}{\textbf{10. Plot $P^\Omega_\mathrm{refl}(\phi, \phi_\mathrm{usb}, \phi_\mathrm{lsb})$ as a phasor as a function of $\phi \in [-\pi, \pi]$.}}\\
+What shape do you get?
 
 
 \end{document}
