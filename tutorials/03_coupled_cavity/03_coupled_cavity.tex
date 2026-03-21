@@ -354,13 +354,30 @@ I recommend using Mathematica, sympy, or Desmos to make some of these plots at t
 \textbf{Analysis of the Coupled Cavity}
 
 We will focus only on the carrier $E_\mathrm{in} = E_0 e^{i \omega_0 t}$ analysis first.
-The coupled-cavity typically resonates the carrier in both the first and second cavities.\\
-\textcolor{Mahogany}{\textbf{1. Write the second cavity reflectivity, gain, and transmission expressions $r(\phi_2), g(\phi_2), t(\phi_2)$, using Equations~\ref{eq:fp_refl}, \ref{eq:fp_cav}, and \ref{eq:fp_trans}, in terms of $r_2,r_3, t_2, t_3,$ and $\phi_2$}}.
+The coupled-cavity typically resonates the carrier in both the first and second cavities.
 
-\textcolor{Mahogany}{\textbf{2. Write the compound cavity reflectivity, gain, and transmission expressions $r(\phi_1,\phi_2), g_1(\phi_1,\phi_2), t(\phi_1,\phi_2)$ in terms of $r_1,t_1,\phi_1$, and your expressions from (1)}}.
-Here $g_1$ is used to emphasize this is the gain for the first cavity.
+\textcolor{MidnightBlue}{\textbf{1. Write the second cavity reflectivity, gain, and transmission expressions $$r(\phi_2), g(\phi_2), t(\phi_2),$$ using Equations~\ref{eq:fp_refl}, \ref{eq:fp_cav}, and \ref{eq:fp_trans}, in terms of $r_2,r_3, t_2, t_3,$ and $\phi_2$}}.
 
-\vspace{0.5cm}
+\textcolor{MidnightBlue}{\textbf{2. Write the compound cavity reflectivity, gain, and transmission expressions $$r(\phi_1,\phi_2), g_1(\phi_1,\phi_2), t(\phi_1,\phi_2),$$ in terms of $r_1,t_1,\phi_1$, and your expressions from (1)}}.\\
+Here $g_1$ is used to emphasize this is the amplitude gain for the first cavity.
+
+\textcolor{MidnightBlue}{\textbf{3. Expand out your terms for $r(\phi_1,\phi_2), g_1(\phi_1,\phi_2), t(\phi_1,\phi_2)$, to get the full expressions in terms of $r_1,r_2,r_3,t_1,t_2,t_3,\phi_1,\phi_2$}}.
+
+\textcolor{MidnightBlue}{\textbf{4. How might you derive the amplitude gain for the second cavity $g_2(\phi_1,\phi_2)$?}}.
+
+\textcolor{MidnightBlue}{\textbf{5. What should the phases for $\phi_1$ and $\phi_2$ be to maximize carrier power in the arm cavity?}}\\
+In Advanced LIGO, the \textit{power-recycling gain} refers to the power gain experienced inside the first cavity $|g_1(\phi_1,\phi_2)|^2$, while the \textit{arm gain} is just the usual FP gain $g(\phi_2)$.
+It can be useful to consider the compound cavity reflectivity here.
+
+\textcolor{MidnightBlue}{\textbf{6. What should the phases for $\phi_1$ and $\phi_2$ for the sidebands in the coupled cavity?}}
+In Advanced LIGO, the RF sideband frequency $\Omega$ is selected such that the sidebands are \textit{anti-resonant} in the arms but resonant in the power-recycling cavity.
+
+\textcolor{MidnightBlue}{\textbf{7. Find the coupled cavity pole $\omega_{cc}$.}}\\
+The \textit{coupled-cavity pole} $\omega_{cc}$ is used to describe the frequency response of the coupled cavity.
+For simplicity, you will need to set the denominator of your coupled cavity field solutions to zero, and let $\phi_1 = 0$ and $\phi_2 = \omega_{cc} L_2 / c$.
+In Advanced LIGO, the arm cavity's higher finesse and longer length let it's dynamics dominate over the first cavity, which is why $\phi_1 = 0$ is a decent approximation.
+
+
 
 
 
