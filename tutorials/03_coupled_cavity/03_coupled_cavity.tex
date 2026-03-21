@@ -1,0 +1,274 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+% \usepackage{xcolor}
+\usepackage{enumitem}
+\usetikzlibrary{arrows.meta, patterns, positioning}
+
+\usepackage[dvipsnames]{xcolor}
+
+% Custom colors
+\definecolor{carrierred}{RGB}{200,30,30}
+\definecolor{sbplus}{RGB}{220,120,0}
+\definecolor{sbminus}{RGB}{210,80,150}
+
+\begin{document}
+
+\begin{center}
+    \textbf{In-class Tutorial: Coupled Cavity}\\
+    March 23, 2026\\
+    Lasers and Optomechanics\\~\\
+    Name: \underline{\hspace{10cm}}
+\end{center}
+
+
+\noindent
+\textbf{Coupled Cavity}\\
+A \textit{coupled cavity} is a useful interferometer configuration for vastly enhancing the input power of a laser.
+Advanced LIGO employs this configuration for the \textit{common-arm cavity} (CARM), 
+by using a \textit{power-recycling mirror} (PRM) in front of the Fabry-Perot arms 
+to recycle the light reflected by the Michelson back into the arms.
+
+The difficulty in a coupled cavity comes in the two degrees of freedom it possesses, $L_1$ and $L_2$.
+Sensing both $L_1$ and $L_2$ at the same time can be nontrivial.
+This is why the RF sidebands are typically set to co-resonate inside the first cavity, but not the second.
+In this tutorial, we will explore how a coupled cavity works.
+
+
+
+\begin{center}
+  
+\begin{tikzpicture}[
+    >=Stealth,
+    thick,
+    carrier/.style={->, very thick, carrierred},
+    sbp/.style={->, very thick, sbplus},
+    sbm/.style={->, very thick, sbminus},
+]
+
+%--- Coordinates ---
+\def\rIx{0}         % r1 center x (input coupler)
+\def\rIIx{3.5}      % r2 center x (coupling mirror)
+\def\rIIIx{9.5}     % r3 center x (end mirror)
+\def\mirH{1.4}      % half-height of mirrors
+\def\mirW{0.25}     % half-width of mirror rectangles
+% EOM box
+\def\EOMx{-4.5}     % EOM center x
+\def\EOMw{0.5}      % EOM half-width
+\def\EOMh{0.7}      % EOM half-height
+% Faraday isolator
+\def\FIx{-2.5}      % FI center x
+\def\FIy{0}
+\def\FIw{0.6}       % FI half-width
+\def\FIh{0.5}       % FI half-height
+% Reflected beam drop
+\def\Yrefl{-2.5}    % y level for downward E_refl exit
+
+%--- Cavity axis (thin guide line) ---
+\draw[gray!40, thin] (-7.5, 0) -- (\rIIIx+2.0, 0);
+
+%============================================================
+% EOM
+%============================================================
+\filldraw[fill=yellow!15!white, draw=black!70, line width=1pt]
+    (\EOMx-\EOMw, -\EOMh) rectangle (\EOMx+\EOMw, \EOMh);
+\node[font=\small\bfseries] at (\EOMx, 0) {EOM};
+\draw[->, thin, black!60] (\EOMx, -\EOMh-0.55) -- (\EOMx, -\EOMh-0.05)
+    node[below, font=\scriptsize, pos=0] {RF};
+
+%============================================================
+% Faraday isolator
+%============================================================
+\filldraw[fill=green!10!white, draw=black!70, line width=1pt]
+    (\FIx-\FIw, \FIy-\FIh) rectangle (\FIx+\FIw, \FIy+\FIh);
+\node[font=\tiny\bfseries, align=center] at (\FIx, \FIy) {Faraday\\isolator};
+
+%============================================================
+% Input beam: single carrier, left to EOM
+%============================================================
+\draw[carrier] (-7.5, 0) -- (\EOMx-\EOMw-0.05, 0)
+    node[midway, above, font=\small] {$E_\mathrm{in}$};
+
+%============================================================
+% EOM to Faraday isolator: carrier + sidebands
+%============================================================
+\draw[carrier] (\EOMx+\EOMw+0.05, 0) -- (\FIx-\FIw-0.05, 0);
+\draw[sbp] (\EOMx+\EOMw+0.05,  0.22) -- (\FIx-\FIw-0.05,  0.22)
+    node[midway, above, font=\scriptsize] {$\omega_0{+}\Omega$};
+\draw[sbm] (\EOMx+\EOMw+0.05, -0.22) -- (\FIx-\FIw-0.05, -0.22)
+    node[midway, below, font=\scriptsize] {$\omega_0{-}\Omega$};
+
+%============================================================
+% Faraday isolator to r1: double-headed carrier + sidebands
+%============================================================
+\draw[carrier, {Stealth}-{Stealth}] (\FIx+\FIw+0.05, 0) -- (\rIx-\mirW-0.05, 0);
+\draw[sbp] (\FIx+\FIw+0.05,  0.22) -- (\rIx-\mirW-0.05,  0.22);
+\draw[sbm] (\FIx+\FIw+0.05, -0.22) -- (\rIx-\mirW-0.05, -0.22);
+
+%============================================================
+% r1 -- input coupler
+%============================================================
+\filldraw[fill=blue!20!white, draw=blue!60!black, line width=1.2pt]
+    (\rIx-\mirW, -\mirH) rectangle (\rIx+\mirW, \mirH);
+\node[below, blue!70!black, font=\small] at (\rIx, -\mirH-0.2) {$r_1$};
+\node[font=\large, black] at (\rIx-\mirW-0.3, -0.7) {$+$};
+\node[font=\large, black] at (\rIx+\mirW+0.3, -0.7) {$-$};
+
+%============================================================
+% Cavity 1 (r1 to r2): carrier + sidebands all resonate here
+%============================================================
+\draw[carrier, {Stealth}-{Stealth}] (\rIx+\mirW+0.05, 0) -- (\rIIx-\mirW-0.05, 0)
+    node[midway, above, font=\small] {$E_\mathrm{cav,1}$};
+\draw[sbp, {Stealth}-{Stealth}] (\rIx+\mirW+0.05,  0.22) -- (\rIIx-\mirW-0.05,  0.22);
+\draw[sbm, {Stealth}-{Stealth}] (\rIx+\mirW+0.05, -0.22) -- (\rIIx-\mirW-0.05, -0.22);
+
+%============================================================
+% r2 -- coupling mirror (HR sides face both cavities)
+%============================================================
+\filldraw[fill=blue!20!white, draw=blue!60!black, line width=1.2pt]
+    (\rIIx-\mirW, -\mirH) rectangle (\rIIx+\mirW, \mirH);
+\node[below, blue!70!black, font=\small] at (\rIIx, -\mirH-0.2) {$r_2$};
+\node[font=\large, black] at (\rIIx-\mirW-0.3, -0.7) {$+$};
+\node[font=\large, black] at (\rIIx+\mirW+0.3, -0.7) {$-$};
+
+%============================================================
+% Cavity 2 (r2 to r3): carrier only, sidebands do not enter
+%============================================================
+\draw[carrier, {Stealth}-{Stealth}] (\rIIx+\mirW+0.05, 0) -- (\rIIIx-\mirW-0.05, 0)
+    node[midway, above, font=\small] {$E_\mathrm{cav,2}$};
+
+%============================================================
+% r3 -- end mirror
+%============================================================
+\filldraw[fill=blue!20!white, draw=blue!60!black, line width=1.2pt]
+    (\rIIIx-\mirW, -\mirH) rectangle (\rIIIx+\mirW, \mirH);
+\node[below, blue!70!black, font=\small] at (\rIIIx, -\mirH-0.2) {$r_3$};
+\node[font=\large, black] at (\rIIIx-\mirW-0.3, -0.7) {$-$};
+\node[font=\large, black] at (\rIIIx+\mirW+0.3, -0.7) {$+$};
+
+%============================================================
+% Transmitted beam: carrier only exiting right of r3
+%============================================================
+\draw[carrier] (\rIIIx+\mirW+0.05, 0) -- (\rIIIx+2.0, 0)
+    node[midway, above, font=\small] {$E_\mathrm{trans}$};
+
+%============================================================
+% Reflected beams: sidebands from r1 back to FI, then drop down
+%============================================================
+\draw[sbp] (\rIx-\mirW-0.05,  0.22) -- (\FIx+\FIw+0.05,  0.22);
+\draw[sbm] (\rIx-\mirW-0.05, -0.22) -- (\FIx+\FIw+0.05, -0.22);
+
+% Downward exits from bottom of Faraday isolator
+\draw[carrier] (\FIx-0.15, -\FIh-0.05) -- (\FIx-0.15, \Yrefl);
+\draw[sbp]     (\FIx,      -\FIh-0.05) -- (\FIx,      \Yrefl);
+\draw[sbm]     (\FIx+0.15, -\FIh-0.05) -- (\FIx+0.15, \Yrefl);
+\node[right, font=\small, carrierred] at (\FIx+0.15+0.15, {0.5*(-\FIh+\Yrefl)}) {$E_\mathrm{refl}$};
+% \draw[carrier] (\FIx+0.15+0.15) -- (0.5*(-\FIh+\Yrefl))
+%     node[right, font=\small] {$E_\mathrm{refl}$};
+
+%============================================================
+% Dimension annotations
+%============================================================
+% L1: r1 right face to r2 left face
+\draw[<->, thin, black!70]
+    (\rIx+\mirW, -\mirH-0.9) -- (\rIIx-\mirW, -\mirH-0.9)
+    node[midway, below, font=\small] {$L_1$};
+\draw[dotted, thin, gray] (\rIx+\mirW,  -\mirH-0.25) -- (\rIx+\mirW,  -\mirH-1.0);
+\draw[dotted, thin, gray] (\rIIx-\mirW, -\mirH-0.25) -- (\rIIx-\mirW, -\mirH-1.0);
+
+% L2: r2 right face to r3 left face
+\draw[<->, thin, black!70]
+    (\rIIx+\mirW, -\mirH-0.9) -- (\rIIIx-\mirW, -\mirH-0.9)
+    node[midway, below, font=\small] {$L_2$};
+\draw[dotted, thin, gray] (\rIIx+\mirW,  -\mirH-0.25) -- (\rIIx+\mirW,  -\mirH-1.0);
+\draw[dotted, thin, gray] (\rIIIx-\mirW, -\mirH-0.25) -- (\rIIIx-\mirW, -\mirH-1.0);
+
+\end{tikzpicture}
+\end{center}
+
+Above we have a diagram of a Fabry-P\'erot cavity set up for Pound-Drever-Hall locking.
+Recall the FP cavity reflection equation is 
+\begin{align}
+r(\phi) = \dfrac{E_\mathrm{refl}}{E_\mathrm{in}}(\phi) = \dfrac{r_1 - r_2 e^{-2 i \phi}}{1 - r_1 r_2 e^{-2 i \phi}}
+\end{align} 
+
+\noindent
+\textbf{Pound-Drever-Hall Locking}\\
+Pound-Drever-Hall circumvents some of these problems by imposing \textit{phase-modulated radio-frequency (RF) sidebands} which co-propagate with the carrier.
+These sidebands, labeled \textcolor{BurntOrange}{$\omega_0 + \Omega$} and \textcolor{WildStrawberry}{$\omega_0 - \Omega$} above, are typically tuned such that if the carrier frequency $\omega_0$ resonates in the cavity, the RF sidebands are \textit{antiresonant} in the cavity.
+
+We will explore the setup of the PDH lock in this note.
+I recommend using Mathematica, sympy, or Desmos to make some of these plots at the end.
+
+\newpage 
+
+\noindent
+\textbf{Derivation of the PDH error signal}
+
+Suppose we start with our carrier light $E_\mathrm{in} = E_0 e^{i \omega_0 t}$.
+Then, we send this light through the electro-optic modulator (EOM) to create the phase-modulated sidebands with modulation depth $\Gamma$ and modulation frequency $\Omega$.\\
+\textcolor{Mahogany}{\textbf{1. What is the total electric field incident on the front of the cavity?}} \\ 
+(It can be helpful to explicitly label your carrier, upper sideband, and lower sideband in the total field).
+
+\vspace{0.5cm}
+
+Next, the light incident on the cavity enters and is reflected by the cavity.
+Each of our three fields will interact with the cavity differently.\\
+\textcolor{Mahogany}{\textbf{2. Write down three single-pass phases $\phi_0, \phi_\mathrm{usb}, \phi_\mathrm{lsb}$ that the carrier, upper sideband, and lower sideband, will experience as they traverse the cavity, in terms of the cavity length $L$, and carrier and RF frequencies $\omega_0$ and $\Omega$.}}
+
+\vspace{0.5cm}
+
+Now that we have our phases, let's use them to describe the total light that is reflected by the cavity.
+\textcolor{Mahogany}{\textbf{3. Write down the cavity total reflected field $E_\mathrm{refl}$ in terms of the reflection function $r(\phi)$ and $\phi_0, \phi_\mathrm{usb}, \phi_\mathrm{lsb}$.}}
+
+\vspace{0.5cm}
+
+Now we have our total reflected field, let's make our power measurement on our photodetector.\\
+\textcolor{Mahogany}{\textbf{4. Write down the cavity total reflected power $P_\mathrm{refl}(t)$ in terms of the reflection function $r(\phi)$ and $\phi_0, \phi_\mathrm{usb}, \phi_\mathrm{lsb}$.}}\\
+You should end up with nine terms, since you are combining three fields.
+At the end, you can set $\Gamma^2 = 0$, to assume small modulation depth.
+
+\vspace{0.5cm}
+
+We have our long $P_\mathrm{refl}(t)$ term.  
+Look at the terms which oscillate at 1$\Omega$.
+Group the $e^{i \Omega t}$ and $e^{-i \Omega t}$ terms.  
+Set the coefficient for $e^{-i \Omega t}$ equal to some complex number $z$,
+and the coefficient for $e^{i \Omega t}$ equal to $y$.\\
+\textcolor{Mahogany}{\textbf{5. What is $z$ and $y$?  Is there any connection between $z$ and $y$?  What is it?}}\\
+\textcolor{Mahogany}{\textbf{6. Rewrite $P_\mathrm{refl}$ in terms of $z$ and $y$.}}
+
+\vspace{0.5cm}
+
+Let's try our demodulation in a new way.
+We usually find $P^I$ and $P^Q$ by integrating $P(t)$ over one cycle of $\cos(\Omega t)$ and $\sin(\Omega t)$, because this gives us a single real number for our two quadratures and is how these measurements are usually made. 
+But we can combine these equations into a single demodulation over $e^{i \Omega t}$ to recover our 1$\Omega$ demodulated response function $P^{\Omega}(\phi, \phi_\mathrm{usb}, \phi_\mathrm{lsb})$.\\
+\textcolor{Mahogany}{\textbf{7. Show we can rewrite the demodulation in this way.}}
+
+\vspace{0.5cm}
+\noindent
+\textcolor{Mahogany}{\textbf{8. Calculate the 1$\Omega$ demodulated power $P^\Omega_\mathrm{refl}(\phi_0, \phi_\mathrm{usb}, \phi_\mathrm{lsb})$.  What can we see pops out?}}
+
+\vspace{0.5cm}
+\noindent
+$P^\Omega_\mathrm{refl}$ is our PDH error signal. 
+Assume the RF sidebands are antiresonant, so $\phi_\mathrm{usb} = \phi_0 + \dfrac{\pi}{4}, \phi_\mathrm{lsb} = \phi_0 - \dfrac{\pi}{4}$.\\
+\textcolor{Mahogany}{\textbf{9. Calculate the derivative of $P^\Omega_\mathrm{refl}$ with respect to $\phi_0$, then evaluate it about zero.}}\\
+This is called the \textit{discriminant} or \textit{optical gain} of the error signal, in units of watts per radian.  
+
+\vspace{0.5cm}
+\noindent
+\textcolor{Mahogany}{\textbf{10. Plot the real and imaginary parts of $P^\Omega_\mathrm{refl}(\phi_0, \phi_\mathrm{usb}, \phi_\mathrm{lsb})$ as a function of $\phi_0 \in [-\dfrac{\pi}{2}, \dfrac{\pi}{2}]$.\\
+Plot the discriminant $\dfrac{P^\Omega_\mathrm{refl}}{d \phi_0}$ about $\phi_0 = 0$ for comparison.}}\\
+Choose a moderate finesse cavity with length $L = 1~\mathrm{m}, T_1 = T_2 = 20\%$, and $\Gamma = 0.1~\mathrm{radians}$.\\
+State what the modulation frequency $\Omega$ must be to be exactly antiresonant in the $L = 1~\mathrm{m}$ cavity.
+
+\vspace{0.5cm}
+\noindent
+\textcolor{Mahogany}{\textbf{11. Plot $P^\Omega_\mathrm{refl}(\phi_0, \phi_\mathrm{usb}, \phi_\mathrm{lsb})$ as a phasor as a function of $\phi_0 \in [-\dfrac{\pi}{2}, \dfrac{\pi}{2}]$.}}\\
+What shape do you get?
+
+
+\end{document}
