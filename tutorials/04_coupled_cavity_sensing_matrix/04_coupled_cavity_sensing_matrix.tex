@@ -27,7 +27,7 @@
 \noindent
 \textbf{Coupled Cavity Sensing Matrix}\\
 In Part 1, we learned about a coupled cavity and compound interferometers, and explored the basics of the coupled cavity resonance.
-In Part 2, we will learn how to sense the many 
+In Part 2, we will learn how to sense the PDH signals for the two degrees of freedom $L_1$ and $L_2$. 
 
 
 
@@ -154,161 +154,46 @@ In Part 2, we will learn how to sense the many
 \draw[sbm] (\rIx-\mirW-0.05, -0.22) -- (\FIx+\FIw+0.05, -0.22);
 
 % Downward exits from bottom of Faraday isolator
-\draw[carrier] (\FIx-0.15, -\FIh-0.05) -- (\FIx-0.15, \Yrefl);
-\draw[sbp]     (\FIx,      -\FIh-0.05) -- (\FIx,      \Yrefl);
+\draw[carrier] (\FIx,      -\FIh-0.05) -- (\FIx,      \Yrefl);
+\draw[sbp]     (\FIx-0.15, -\FIh-0.05) -- (\FIx-0.15, \Yrefl);
 \draw[sbm]     (\FIx+0.15, -\FIh-0.05) -- (\FIx+0.15, \Yrefl);
 \node[right, font=\small, carrierred] at (\FIx+0.15+0.15, {0.5*(-\FIh+\Yrefl)}) {$E_\mathrm{refl}$};
 % \draw[carrier] (\FIx+0.15+0.15) -- (0.5*(-\FIh+\Yrefl))
 %     node[right, font=\small] {$E_\mathrm{refl}$};
 
 %============================================================
+% POP beams: sidebands from r1 back to FI, then drop down
+%============================================================
+
+% Downward exits from bottom of Faraday isolator
+\draw[carrier] (0.5*\rIx+0.5*\rIIx,      0) -- (0.5*\rIx+0.5*\rIIx,      \Yrefl);
+\draw[sbp]     (0.5*\rIx+0.5*\rIIx+0.15, +0.22) -- (0.5*\rIx+0.5*\rIIx+0.15, \Yrefl);
+\draw[sbm]     (0.5*\rIx+0.5*\rIIx-0.15, -0.22) -- (0.5*\rIx+0.5*\rIIx-0.15, \Yrefl);
+\node[right, font=\small, carrierred] at (0.5*\rIx+0.5*\rIIx+0.15+0.15, {0.5*(-\FIh+\Yrefl)}) {$E_\mathrm{pop}$};
+
+%============================================================
 % Dimension annotations
 %============================================================
 % L1: r1 right face to r2 left face
 \draw[<->, thin, black!70]
-    (\rIx+\mirW, -\mirH-0.9) -- (\rIIx-\mirW, -\mirH-0.9)
-    node[midway, below, font=\small] {$L_1$};
-\draw[dotted, thin, gray] (\rIx+\mirW,  -\mirH-0.25) -- (\rIx+\mirW,  -\mirH-1.0);
-\draw[dotted, thin, gray] (\rIIx-\mirW, -\mirH-0.25) -- (\rIIx-\mirW, -\mirH-1.0);
+    (\rIx+\mirW, \mirH+0.1) -- (\rIIx-\mirW, \mirH+0.1)
+    node[midway, above, font=\small] {$L_1$};
+% \draw[dotted, thin, gray] (\rIx+\mirW,  -\mirH-0.25) -- (\rIx+\mirW,  -\mirH-1.0);
+% \draw[dotted, thin, gray] (\rIIx-\mirW, -\mirH-0.25) -- (\rIIx-\mirW, -\mirH-1.0);
 
 % L2: r2 right face to r3 left face
 \draw[<->, thin, black!70]
-    (\rIIx+\mirW, -\mirH-0.9) -- (\rIIIx-\mirW, -\mirH-0.9)
-    node[midway, below, font=\small] {$L_2$};
-\draw[dotted, thin, gray] (\rIIx+\mirW,  -\mirH-0.25) -- (\rIIx+\mirW,  -\mirH-1.0);
-\draw[dotted, thin, gray] (\rIIIx-\mirW, -\mirH-0.25) -- (\rIIIx-\mirW, -\mirH-1.0);
+    (\rIIx+\mirW, \mirH+0.1) -- (\rIIIx-\mirW, \mirH+0.1)
+    node[midway, above, font=\small] {$L_2$};
+% \draw[dotted, thin, gray] (\rIIx+\mirW,  -\mirH-0.25) -- (\rIIx+\mirW,  -\mirH-1.0);
+% \draw[dotted, thin, gray] (\rIIIx-\mirW, -\mirH-0.25) -- (\rIIIx-\mirW, -\mirH-1.0);
 
 \end{tikzpicture}
 
-\vspace{0.5cm}
 
-\begin{tikzpicture}[
-    >=Stealth,
-    thick,
-    carrier/.style={->, very thick, carrierred},
-    sbp/.style={->, very thick, sbplus},
-    sbm/.style={->, very thick, sbminus},
-]
-
-%--- Coordinates ---
-\def\rIx{0}         % r1 center x (input coupler)
-\def\rIIx{3.5}      % r2 center x (end mirror, aligned with r2 above)
-\def\mirH{1.4}      % half-height of mirrors
-\def\mirW{0.25}     % half-width of mirror rectangles
-% EOM box
-\def\EOMx{-4.5}     % EOM center x
-\def\EOMw{0.5}      % EOM half-width
-\def\EOMh{0.7}      % EOM half-height
-% Faraday isolator
-\def\FIx{-2.5}      % FI center x
-\def\FIy{0}
-\def\FIw{0.6}       % FI half-width
-\def\FIh{0.5}       % FI half-height
-% Reflected beam drop
-\def\Yrefl{-2.5}    % y level for downward E_refl exit
-
-%--- Cavity axis (thin guide line) ---
-\draw[gray!40, thin] (-7.5, 0) -- (\rIIx+2.0, 0);
-
-%============================================================
-% EOM
-%============================================================
-\filldraw[fill=yellow!15!white, draw=black!70, line width=1pt]
-    (\EOMx-\EOMw, -\EOMh) rectangle (\EOMx+\EOMw, \EOMh);
-\node[font=\small\bfseries] at (\EOMx, 0) {EOM};
-\draw[->, thin, black!60] (\EOMx, -\EOMh-0.55) -- (\EOMx, -\EOMh-0.05)
-    node[below, font=\scriptsize, pos=0] {RF};
-
-%============================================================
-% Faraday isolator
-%============================================================
-\filldraw[fill=green!10!white, draw=black!70, line width=1pt]
-    (\FIx-\FIw, \FIy-\FIh) rectangle (\FIx+\FIw, \FIy+\FIh);
-\node[font=\tiny\bfseries, align=center] at (\FIx, \FIy) {Faraday\\isolator};
-
-%============================================================
-% Input beam: single carrier, left to EOM
-%============================================================
-\draw[carrier] (-7.5, 0) -- (\EOMx-\EOMw-0.05, 0)
-    node[midway, above, font=\small] {$E_\mathrm{in}$};
-
-%============================================================
-% EOM to Faraday isolator: carrier + sidebands
-%============================================================
-\draw[carrier] (\EOMx+\EOMw+0.05, 0) -- (\FIx-\FIw-0.05, 0);
-\draw[sbp] (\EOMx+\EOMw+0.05,  0.22) -- (\FIx-\FIw-0.05,  0.22)
-    node[midway, above, font=\scriptsize] {$\omega_0{+}\Omega$};
-\draw[sbm] (\EOMx+\EOMw+0.05, -0.22) -- (\FIx-\FIw-0.05, -0.22)
-    node[midway, below, font=\scriptsize] {$\omega_0{-}\Omega$};
-
-%============================================================
-% Faraday isolator to r1: double-headed carrier + sidebands
-%============================================================
-\draw[carrier, {Stealth}-{Stealth}] (\FIx+\FIw+0.05, 0) -- (\rIx-\mirW-0.05, 0);
-\draw[sbp] (\FIx+\FIw+0.05,  0.22) -- (\rIx-\mirW-0.05,  0.22);
-\draw[sbm] (\FIx+\FIw+0.05, -0.22) -- (\rIx-\mirW-0.05, -0.22);
-
-%============================================================
-% r1 -- input coupler
-%============================================================
-\filldraw[fill=blue!20!white, draw=blue!60!black, line width=1.2pt]
-    (\rIx-\mirW, -\mirH) rectangle (\rIx+\mirW, \mirH);
-\node[below, blue!70!black, font=\small] at (\rIx, -\mirH-0.2) {$r_1$};
-\node[font=\large, black] at (\rIx-\mirW-0.3, -0.7) {$+$};
-\node[font=\large, black] at (\rIx+\mirW+0.3, -0.7) {$-$};
-
-%============================================================
-% Cavity (r1 to r2): carrier + sidebands
-%============================================================
-\draw[carrier, {Stealth}-{Stealth}] (\rIx+\mirW+0.05, 0) -- (\rIIx-\mirW-0.05, 0)
-    node[midway, above=8pt, font=\small] {$E_\mathrm{cav,1}$};
-\draw[sbp, {Stealth}-{Stealth}] (\rIx+\mirW+0.05,  0.22) -- (\rIIx-\mirW-0.05,  0.22);
-\draw[sbm, {Stealth}-{Stealth}] (\rIx+\mirW+0.05, -0.22) -- (\rIIx-\mirW-0.05, -0.22);
-
-%============================================================
-% r2 -- end mirror (compound: represents r2+r3 as complex reflectivity)
-%============================================================
-\filldraw[fill=blue!60!white, draw=blue!100!black, line width=1.2pt]
-    (\rIIx-\mirW, -\mirH) rectangle (\rIIx+\mirW, \mirH);
-\node[font=\large, black] at (\rIIx-\mirW-0.3, -0.7) {$+$};
-\node[below, blue!70!black, font=\small] at (\rIIx, -\mirH-0.2) {$r(\phi_2)$};
-
-%============================================================
-% Transmitted beam: exiting right of r2
-%============================================================
-\draw[carrier] (\rIIx+\mirW+0.05, 0) -- (\rIIx+2.0, 0)
-    node[midway, above, font=\small] {$E_\mathrm{trans}$};
-
-%============================================================
-% Reflected beams: sidebands from r1 back to FI, then drop down
-%============================================================
-\draw[sbp] (\rIx-\mirW-0.05,  0.22) -- (\FIx+\FIw+0.05,  0.22);
-\draw[sbm] (\rIx-\mirW-0.05, -0.22) -- (\FIx+\FIw+0.05, -0.22);
-
-% Downward exits from bottom of Faraday isolator
-\draw[carrier] (\FIx-0.15, -\FIh-0.05) -- (\FIx-0.15, \Yrefl);
-\draw[sbp]     (\FIx,      -\FIh-0.05) -- (\FIx,      \Yrefl);
-\draw[sbm]     (\FIx+0.15, -\FIh-0.05) -- (\FIx+0.15, \Yrefl);
-\node[right, font=\small, carrierred] at (\FIx+0.15+0.15, {0.5*(-\FIh+\Yrefl)}) {$E_\mathrm{refl}$};
-
-%============================================================
-% Dimension annotation
-%============================================================
-% L1: r1 right face to r2 left face
-\draw[<->, thin, black!70]
-    (\rIx+\mirW, -\mirH-0.9) -- (\rIIx-\mirW, -\mirH-0.9)
-    node[midway, below, font=\small] {$L_1$};
-\draw[dotted, thin, gray] (\rIx+\mirW,  -\mirH-0.25) -- (\rIx+\mirW,  -\mirH-1.0);
-\draw[dotted, thin, gray] (\rIIx-\mirW, -\mirH-0.25) -- (\rIIx-\mirW, -\mirH-1.0);
-
-% Invisible path to match bounding box width of top diagram
-\path (-7.5, 0) -- (11.5, 0);
-
-\end{tikzpicture}
 \end{center}
 
-\noindent Figure 1A: Coupled-cavity interferometer, with three mirrors aligned and carrier plus one set of RF sidebands incident.\\
-\noindent Figure 1B: Compound interferometer representing the coupled-cavity interferometer, where we have ``collapsed'' the $r_2$ and $r_3$ mirrors into a single mirror with reflectivity $r(\phi_2)$.
+\noindent \textbf{Figure 1:} Coupled-cavity interferometer, with three mirrors aligned and carrier plus one set of RF sidebands incident.  Also labeled is the REFL and POP fields, standing for the reflection and pick-off ports.
 
 Recall the Fabry-Perot cavity reflection equation is 
 \begin{align}
