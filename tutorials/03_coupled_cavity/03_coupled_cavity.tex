@@ -17,7 +17,7 @@
 \begin{document}
 
 \begin{center}
-    \textbf{In-class Tutorial: Coupled Cavity}\\
+    \textbf{In-class Tutorial: Coupled Cavities (Part 1)}\\
     March 23, 2026\\
     Lasers and Optomechanics\\~\\
     Name: \underline{\hspace{10cm}}
@@ -277,6 +277,7 @@ In this tutorial, we will explore how a coupled cavity works.
 %============================================================
 \filldraw[fill=blue!60!white, draw=blue!100!black, line width=1.2pt]
     (\rIIx-\mirW, -\mirH) rectangle (\rIIx+\mirW, \mirH);
+\node[font=\large, black] at (\rIIx-\mirW-0.3, -0.7) {$+$};
 \node[below, blue!70!black, font=\small] at (\rIIx, -\mirH-0.2) {$r(\phi_2)$};
 
 %============================================================
@@ -343,12 +344,12 @@ Equations~\ref{eq:fp_refl} and \ref{eq:fp_trans} shows our Fabry-Perot reflectiv
 
 
 Below we will analyze the coupled cavity, 
-calculate the \textit{power-recycling gain}, 
-calculate the \textit{coupled-cavity pole},
-and build a \textit{sensing matrix} for our two degrees of freedom $\phi_1$ and $\phi_2$.
+calculate the \textit{arm gain} and \textit{power-recycling gain}, 
+as well as calculate the \textit{coupled-cavity pole}.
+In Part 2, we'll build a \textit{sensing matrix} for our two degrees of freedom $\phi_1$ and $\phi_2$.
 I recommend using Mathematica, sympy, or Desmos to make some of these plots at the end.
 
-
+\vspace{0.5cm}
 
 \noindent
 \textbf{Analysis of the Coupled Cavity}
@@ -367,12 +368,13 @@ Here $g_1$ is used to emphasize this is the amplitude gain for the first cavity.
 
 \textcolor{MidnightBlue}{\textbf{5. What should the phases for $\phi_1$ and $\phi_2$ be to maximize carrier power in the arm cavity?}}\\
 In Advanced LIGO, the \textit{power-recycling gain} refers to the power gain experienced inside the first cavity $|g_1(\phi_1,\phi_2)|^2$, while the \textit{arm gain} is just the usual FP gain $g(\phi_2)$.
-It can be useful to consider the compound cavity reflectivity here.
+It can be useful to consider the arm cavity gain and reflectivity ($g(\phi_2)$ and $r(\phi_2)$) here.
+You may need the fact that the end mirror transmission $T_3 = 5~\mathrm{ppm}$, while the middle mirror transmission $T_2 = 1.5~\%$.
 
 \textcolor{MidnightBlue}{\textbf{6. What should the phases for $\phi_1$ and $\phi_2$ for the sidebands in the coupled cavity?}}
 In Advanced LIGO, the RF sideband frequency $\Omega$ is selected such that the sidebands are \textit{anti-resonant} in the arms but resonant in the power-recycling cavity.
 
-\textcolor{MidnightBlue}{\textbf{7. Find the coupled cavity pole $\omega_{cc}$.}}\\
+\textcolor{MidnightBlue}{\textbf{7. Find the coupled cavity pole $\omega_{cc}$ for carrier.}}\\
 The \textit{coupled-cavity pole} $\omega_{cc}$ is used to describe the frequency response of the coupled cavity.
 For simplicity, you will need to set the denominator of your coupled cavity field solutions to zero, and let $\phi_1 = 0$ and $\phi_2 = \omega_{cc} L_2 / c$.
 In Advanced LIGO, the arm cavity's higher finesse and longer length let it's dynamics dominate over the first cavity, which is why $\phi_1 = 0$ is a decent approximation.
