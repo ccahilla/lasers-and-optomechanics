@@ -3591,7 +3591,7 @@ regimes is the most stable laser in the world."
 }, Open  ]]
 },
 WindowSize->{1560, 965},
-WindowMargins->{{1, Automatic}, {32, Automatic}},
+WindowMargins->{{0, Automatic}, {32, Automatic}},
 CellContext->Notebook,
 FrontEndVersion->"13.2 for Mac OS X ARM (64-bit) (January 30, 2023)",
 StyleDefinitions->"ReverseColor.nb",
