@@ -1,0 +1,157 @@
+\documentclass[10pt, letterpaper]{article}
+
+\usepackage[top=0.65in, bottom=0.65in, left=0.75in, right=0.75in]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{makecell}
+\usepackage{parskip}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\definecolor{headerblue}{RGB}{31, 73, 125}
+\definecolor{rowshade}{RGB}{220, 230, 242}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\setlength{\parskip}{0pt}
+
+\begin{document}
+
+% ============================================================
+%  PAGE 1 — Rubric table
+% ============================================================
+\begin{center}
+  {\large\bfseries\color{headerblue} In-Class Science Presentation Rubric}\\[4pt]
+  {\small Presenter: \underline{\hspace{10cm}} \;
+   Date: \underline{\hspace{2.5cm}}}\\[2pt]
+  {\small Topic: \underline{\hspace{12.8cm}}}
+\end{center}
+
+\vspace{3pt}
+{\small\textbf{Instructions:} Circle or highlight the score that best describes the presentation in each category.
+Record earned points in the score summary on page~2. Maximum total: \textbf{100 points}.}
+
+\vspace{6pt}
+
+\renewcommand{\arraystretch}{1.35}
+\setlength{\tabcolsep}{4pt}
+\footnotesize
+
+\noindent
+\begin{tabularx}{\textwidth}{L{2.6cm} C{0.85cm} X X X X}
+
+\rowcolor{headerblue}
+\makecell[tl]{\textcolor{white}{\textbf{Category}}}
+  & \textcolor{white}{\textbf{Score}}
+  & \makecell[tl]{\textcolor{white}{\textbf{Excellent}}}
+  & \makecell[tl]{\textcolor{white}{\textbf{Proficient}}}
+  & \makecell[tl]{\textcolor{white}{\textbf{Developing}}}
+  & \makecell[tl]{\textcolor{white}{\textbf{Beginning}}}\\
+\toprule
+
+\rowcolor{lightgray}
+\makecell[tl]{\textbf{1. Scientific}\\\textbf{Rigor}\\(25 pts)}
+  & \makecell[tc]{$\bigcirc$\,25\\[3pt]$\bigcirc$\,20\\[3pt]$\bigcirc$\,15\\[3pt]$\bigcirc$\,10\\[3pt]$\bigcirc$\,5\\[3pt]$\bigcirc$\,0}
+  & All claims are precise and scientifically accurate. Assumptions are clearly stated and justified. Quantitative analysis is included where appropriate, and limitations are explicitly acknowledged.
+  & Most claims are accurate with only minor errors. Some quantitative support is provided. A few assumptions go unstated and limitations are only briefly mentioned.
+  & Several claims are vague or inaccurate. Quantitative analysis is limited. Assumptions and limitations of the work are not discussed.
+  & Claims are largely inaccurate or unsupported. No quantitative analysis. No discussion of assumptions, uncertainties, or limitations.\\
+\midrule
+
+\rowcolor{rowshade}
+\makecell[tl]{\textbf{2. Motivation}\\\textbf{\& Context}\\(25 pts)}
+  & \makecell[tc]{$\bigcirc$\,25\\[3pt]$\bigcirc$\,20\\[3pt]$\bigcirc$\,15\\[3pt]$\bigcirc$\,10\\[3pt]$\bigcirc$\,5\\[3pt]$\bigcirc$\,0}
+  & A compelling case is made for why the topic matters. Strong connections to broader scientific or societal questions are drawn. The audience is clearly engaged and oriented from the outset.
+  & The importance of the topic is stated but not deeply argued. Context is provided at a surface level. The opening is generally engaging but lacks depth.
+  & Motivation is vague or unconvincing. Little effort is made to connect the topic to broader questions. The audience is not clearly oriented to the subject.
+  & No motivation is provided. The topic is introduced without context. The audience is left unclear on the significance or relevance of the work.\\
+\midrule
+
+\rowcolor{lightgray}
+\makecell[tl]{\textbf{3. Research}\\\textbf{\& References}\\(25 pts)}
+  & \makecell[tc]{$\bigcirc$\,25\\[3pt]$\bigcirc$\,20\\[3pt]$\bigcirc$\,15\\[3pt]$\bigcirc$\,10\\[3pt]$\bigcirc$\,5\\[3pt]$\bigcirc$\,0}
+  & Draws on peer-reviewed primary literature; sources are current and authoritative. All references are properly and consistently cited. Evidence is engaged critically and placed in appropriate context.
+  & Research is based mostly on primary sources; references cited with minor inconsistencies. Evidence is used appropriately and supports the main claims.
+  & A mix of primary and popular sources is used; some claims lack citations. Evidence is occasionally misinterpreted or used out of context.
+  & Research relies mainly on non-scholarly sources; few or no citations provided. Evidence is poorly used or misrepresented.\\
+\midrule
+
+\rowcolor{rowshade}
+\makecell[tl]{\textbf{4. Presentation}\\\textbf{Style}\\(25 pts)}
+  & \makecell[tc]{$\bigcirc$\,25\\[3pt]$\bigcirc$\,20\\[3pt]$\bigcirc$\,15\\[3pt]$\bigcirc$\,10\\[3pt]$\bigcirc$\,5\\[3pt]$\bigcirc$\,0}
+  & Delivery is clear, confident, and well-paced. Visuals are effective, uncluttered, and enhance understanding. Timing is well managed and audience questions are answered knowledgeably.
+  & Delivery is generally clear with minor hesitations. Visuals support the content adequately. The presentation is mostly on time and most questions are handled well.
+  & Delivery is unclear at times; visuals are cluttered or insufficient. The presentation runs over or under time and some questions are not addressed adequately.
+  & Delivery is inaudible or very difficult to follow. Visuals are absent or confusing. Timing is poor and the presenter is unable to address audience questions.\\
+\bottomrule
+\end{tabularx}
+
+\newpage
+\normalsize
+
+% ============================================================
+%  PAGE 2 — Score Summary + Feedback
+% ============================================================
+\begin{center}
+  {\large\bfseries\color{headerblue} Score Summary \& Feedback}\\[4pt]
+  {\small Presenter: \underline{\hspace{6cm}} \quad Topic: \underline{\hspace{6cm}}}
+\end{center}
+
+\vspace{8pt}
+\renewcommand{\arraystretch}{1.6}
+\setlength{\tabcolsep}{5pt}
+\noindent
+\begin{tabularx}{\textwidth}{L{9cm} C{2cm} X}
+\rowcolor{headerblue}
+  \textcolor{white}{\textbf{Category}} &
+  \textcolor{white}{\textbf{Max}} &
+  \textcolor{white}{\textbf{Points Earned}}\\
+\midrule
+\rowcolor{lightgray}  \textbf{1.}\ Scientific Rigor        & 25  & \\
+\rowcolor{rowshade}   \textbf{2.}\ Motivation \& Context   & 25  & \\
+\rowcolor{lightgray}  \textbf{3.}\ Research \& References  & 25  & \\
+\rowcolor{rowshade}   \textbf{4.}\ Presentation Style      & 25  & \\
+\midrule
+\rowcolor{headerblue} \textcolor{white}{\textbf{Total}} & \textcolor{white}{\textbf{100}} & \\
+\end{tabularx}
+
+\vspace{12pt}
+\noindent{\color{headerblue}\textbf{\large Notes}}
+\vspace{4pt}
+
+\noindent\colorbox{lightgray}{\makebox[\dimexpr\textwidth-2\fboxsep]{\textbf{\strut 1. Scientific Rigor}}}\\[20pt]
+
+
+\vspace{8pt}
+\noindent\colorbox{rowshade}{\makebox[\dimexpr\textwidth-2\fboxsep]{\textbf{\strut 2. Motivation \& Context}}}\\[20pt]
+
+
+\vspace{8pt}
+\noindent\colorbox{lightgray}{\makebox[\dimexpr\textwidth-2\fboxsep]{\textbf{\strut 3. Research \& References}}}\\[20pt]
+
+
+\vspace{8pt}
+\noindent\colorbox{rowshade}{\makebox[\dimexpr\textwidth-2\fboxsep]{\textbf{\strut 4. Presentation Style}}}\\[20pt]
+
+
+\vspace{12pt}
+\noindent{\color{headerblue}\textbf{\large Overall Feedback}}
+\vspace{4pt}
+
+\noindent\textbf{Strengths:}\\[4pt]
+\\[20pt]
+\vspace{8pt}
+\noindent\textbf{Areas for Improvement:}\\[4pt]
+\\[20pt]
+
+\vspace{14pt}
+\noindent
+
+\textbf{Final Grade:} \underline{\hspace{3cm}}\\[4pt]
+\textbf{Date:} \underline{\hspace{3cm}}
+
+\end{document}
