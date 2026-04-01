@@ -30,6 +30,7 @@ project:
         - file: chapters/06_fabry_perot_dark_offset_dither_lock.ipynb
         - file: chapters/07_pound_drever_hall.ipynb
         - file: chapters/08_coupled_cavities.ipynb
+        - file: chapters/09_shot_noise.ipynb
     - title: Homework
       children:
         - file: homework/00_hw_overview.ipynb
